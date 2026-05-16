@@ -1,0 +1,50 @@
+{
+  "existing": {
+    "get_polling_database": {
+      "GET_POLLING_DATABASE00": {
+        "date": "s50",
+        "institute_id": "INSTITUTE01",
+        "method_id": "METHOD01",
+        "parliament_id": "PARLIAMENT01",
+        "result": {},
+        "survey_period": {},
+        "surveyed_person": "s56",
+        "tasker_id": "TASKER01"
+      },
+      "GET_POLLING_DATABASE01": {
+        "date": "sa0",
+        "institute_id": "INSTITUTE01",
+        "method_id": "METHOD01",
+        "parliament_id": "PARLIAMENT01",
+        "result": {},
+        "survey_period": {},
+        "surveyed_person": "sa6",
+        "tasker_id": "TASKER01"
+      },
+      "GET_POLLING_DATABASE02": {
+        "date": "sf0",
+        "institute_id": "INSTITUTE01",
+        "method_id": "METHOD01",
+        "parliament_id": "PARLIAMENT01",
+        "result": {},
+        "survey_period": {},
+        "surveyed_person": "sf6",
+        "tasker_id": "TASKER01"
+      }
+    }
+  },
+  "new": {
+    "get_polling_database": {
+      "get_polling_database_ref01": {
+        "date": "s140",
+        "institute_id": "INSTITUTE01",
+        "method_id": "METHOD01",
+        "parliament_id": "PARLIAMENT01",
+        "result": {},
+        "survey_period": {},
+        "surveyed_person": "s146",
+        "tasker_id": "TASKER01"
+      }
+    }
+  }
+}

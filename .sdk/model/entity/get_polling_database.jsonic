@@ -1,0 +1,69 @@
+# Entity: get_polling_database
+
+main: kit: entity: get_polling_database: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "date"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "institute_id"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "method_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "parliament_id"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "survey_period"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "surveyed_person"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "tasker_id"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "get_polling_database"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/"
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

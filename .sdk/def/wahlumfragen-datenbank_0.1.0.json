@@ -1,0 +1,324 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Wahlumfragen Datenbank API",
+    "description": "Die API von DAWUM stellt eine umfassende Datenbank für Wahlumfragen als JSON-Datei zur Verfügung. Sie ermöglicht den Zugriff auf aktuelle Umfrageergebnisse für verschiedene politische Parteien in Deutschland unter der Lizenz ODC-ODbL.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://dawum.de"
+    },
+    "license": {
+      "name": "ODC Open Database License (ODC-ODbL)",
+      "url": "https://opendatacommons.org/licenses/odbl/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.dawum.de",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Get complete polling database",
+        "description": "Returns the complete database of election polls including information about parliaments, institutes, polling organizations, parties, and all surveys from 2017 onwards. This endpoint is automatically updated when new polls are added to the database.",
+        "operationId": "getPollingDatabase",
+        "responses": {
+          "200": {
+            "description": "Successful response containing the complete polling database",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PollingDatabase"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Polling Data"
+        ]
+      }
+    },
+    "/last_update.txt": {
+      "get": {
+        "summary": "Get last update timestamp",
+        "description": "Returns the timestamp of the last database update in W3C DateTime format. This can be used to check if the local copy of the database is up-to-date.",
+        "operationId": "getLastUpdate",
+        "responses": {
+          "200": {
+            "description": "Successful response containing the last update timestamp",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2023-10-15T14:30:00+02:00"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Metadata"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PollingDatabase": {
+        "type": "object",
+        "properties": {
+          "Database": {
+            "$ref": "#/components/schemas/DatabaseInfo"
+          },
+          "License": {
+            "$ref": "#/components/schemas/License"
+          },
+          "Publisher": {
+            "type": "string",
+            "description": "Domain of the publisher",
+            "example": "dawum.de"
+          },
+          "Author": {
+            "type": "string",
+            "description": "Creator of the database",
+            "example": "DAWUM"
+          },
+          "Last_Update": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp in W3C DateTime format"
+          },
+          "Parliaments": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Parliament"
+            },
+            "description": "Collection of parliaments indexed by ID"
+          },
+          "Institutes": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Institute"
+            },
+            "description": "Collection of polling institutes indexed by ID"
+          },
+          "Taskers": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Tasker"
+            },
+            "description": "Collection of poll commissioners indexed by ID"
+          },
+          "Methods": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Method"
+            },
+            "description": "Collection of polling methods indexed by ID"
+          },
+          "Parties": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Party"
+            },
+            "description": "Collection of political parties indexed by ID"
+          },
+          "Surveys": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Survey"
+            },
+            "description": "Array of all polling surveys"
+          }
+        },
+        "required": [
+          "Database",
+          "License",
+          "Publisher",
+          "Author",
+          "Last_Update",
+          "Parliaments",
+          "Institutes",
+          "Taskers",
+          "Methods",
+          "Parties",
+          "Surveys"
+        ]
+      },
+      "DatabaseInfo": {
+        "type": "object",
+        "description": "Information about the database"
+      },
+      "License": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "Full name of the license",
+            "example": "ODC Open Database License"
+          },
+          "Shortcut": {
+            "type": "string",
+            "description": "Short name of the license",
+            "example": "ODC-ODbL"
+          },
+          "Link": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the license",
+            "example": "https://opendatacommons.org/licenses/odbl/"
+          }
+        }
+      },
+      "Parliament": {
+        "type": "object",
+        "properties": {
+          "Shortcut": {
+            "type": "string",
+            "description": "Short name of the federal state or federal parliament",
+            "example": "Nordrhein-Westfalen (NRW)"
+          },
+          "Name": {
+            "type": "string",
+            "description": "Full name of the parliament",
+            "example": "Landtag Nordrhein-Westfalen"
+          },
+          "Election": {
+            "type": "string",
+            "description": "Name of the election",
+            "example": "Landtagswahl Nordrhein-Westfalen"
+          }
+        }
+      },
+      "Institute": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "Name of the polling institute",
+            "example": "Forsa"
+          }
+        }
+      },
+      "Tasker": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "Name of the poll commissioner",
+            "example": "RTL/ntv"
+          }
+        }
+      },
+      "Method": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "Name of the polling method",
+            "example": "Online"
+          }
+        }
+      },
+      "Party": {
+        "type": "object",
+        "properties": {
+          "Shortcut": {
+            "type": "string",
+            "description": "Abbreviation of the party",
+            "example": "CDU/CSU"
+          },
+          "Name": {
+            "type": "string",
+            "description": "Full name of the party",
+            "example": "Christlich Demokratische Union/Christlich-Soziale Union"
+          }
+        }
+      },
+      "Survey": {
+        "type": "object",
+        "properties": {
+          "Parliament_ID": {
+            "type": "string",
+            "description": "ID of the parliament"
+          },
+          "Institute_ID": {
+            "type": "string",
+            "description": "ID of the polling institute"
+          },
+          "Tasker_ID": {
+            "type": "string",
+            "description": "ID of the poll commissioner"
+          },
+          "Method_ID": {
+            "type": "string",
+            "description": "ID of the polling method"
+          },
+          "Results": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number",
+              "format": "float",
+              "description": "Poll result as percentage"
+            },
+            "description": "Polling results indexed by party ID"
+          },
+          "Date": {
+            "type": "string",
+            "format": "date",
+            "description": "Publication date in ISO 8601 format",
+            "example": "2023-10-15"
+          },
+          "Survey_Period": {
+            "$ref": "#/components/schemas/SurveyPeriod"
+          },
+          "Surveyed_Persons": {
+            "type": "integer",
+            "description": "Number of persons surveyed",
+            "example": 1500
+          }
+        },
+        "required": [
+          "Parliament_ID",
+          "Institute_ID",
+          "Tasker_ID",
+          "Results",
+          "Date"
+        ]
+      },
+      "SurveyPeriod": {
+        "type": "object",
+        "properties": {
+          "Date_Start": {
+            "type": "string",
+            "format": "date",
+            "description": "Start date of the survey period"
+          },
+          "Date_End": {
+            "type": "string",
+            "format": "date",
+            "description": "End date of the survey period"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Polling Data",
+      "description": "Endpoints for accessing election polling data"
+    },
+    {
+      "name": "Metadata",
+      "description": "Endpoints for accessing database metadata"
+    }
+  ],
+  "externalDocs": {
+    "description": "Official API Documentation",
+    "url": "https://dawum.de/API/"
+  }
+}

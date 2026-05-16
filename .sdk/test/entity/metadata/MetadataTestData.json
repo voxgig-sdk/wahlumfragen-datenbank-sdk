@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "metadata": {
+      "METADATA00": {},
+      "METADATA01": {},
+      "METADATA02": {}
+    }
+  },
+  "new": {
+    "metadata": {
+      "metadata_ref01": {}
+    }
+  }
+}

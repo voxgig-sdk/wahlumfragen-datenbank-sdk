@@ -1,0 +1,22 @@
+# BasicGetPollingDatabaseFlow
+
+main: kit: flow: BasicGetPollingDatabaseFlow:
+{
+  entity: "get_polling_database",
+  kind: "basic",
+  name: "BasicGetPollingDatabaseFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "get_polling_database_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGetPollingDatabaseFlow"
+}

@@ -1,0 +1,27 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://dawum.de"
+      }
+      description: "Die API von DAWUM stellt eine umfassende Datenbank für Wahlumfragen als JSON-Datei zur Verfügung. Sie ermöglicht den Zugriff auf aktuelle Umfrageergebnisse für verschiedene politische Parteien in Deutschland unter der Lizenz ODC-ODbL."
+      license: {
+        name: "ODC Open Database License (ODC-ODbL)"
+        url: "https://opendatacommons.org/licenses/odbl/"
+      }
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.dawum.de"
+        }
+      ]
+      title: "Wahlumfragen Datenbank API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}
