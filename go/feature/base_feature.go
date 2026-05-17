@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/core"
+	"github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go/core"
 )
 
 type BaseFeature struct {

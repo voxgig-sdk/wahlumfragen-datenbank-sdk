@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/wahlumfragen-datenbank-sdk"
-	"github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/core"
+	sdk "github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go"
+	"github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go/core"
 )
 
 func TestGetPollingDatabaseDirect(t *testing.T) {

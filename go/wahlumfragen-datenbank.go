@@ -1,10 +1,10 @@
 package voxgigwahlumfragendatenbanksdk
 
 import (
-	"github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/core"
-	"github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/entity"
-	"github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/feature"
-	_ "github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/utility"
+	"github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go/core"
+	"github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go/entity"
+	"github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go/feature"
+	_ "github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/wahlumfragen-datenbank-sdk"
+	sdk "github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go"
 )
 
 func TestExists(t *testing.T) {
