@@ -61,14 +61,12 @@ def _get_polling_database_direct_setup(mockres):
     env = runner.env_override({
         "WAHLUMFRAGENDATENBANK_TEST_GET_POLLING_DATABASE_ENTID": {},
         "WAHLUMFRAGENDATENBANK_TEST_LIVE": "FALSE",
-        "WAHLUMFRAGENDATENBANK_APIKEY": "NONE",
     })
 
     live = env.get("WAHLUMFRAGENDATENBANK_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("WAHLUMFRAGENDATENBANK_APIKEY"),
         }
         client = WahlumfragenDatenbankSDK(merged_opts)
         return {

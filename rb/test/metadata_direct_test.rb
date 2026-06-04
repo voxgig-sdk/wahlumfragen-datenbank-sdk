@@ -61,14 +61,12 @@ def metadata_direct_setup(mockres)
   env = Runner.env_override({
     "WAHLUMFRAGENDATENBANK_TEST_METADATA_ENTID" => {},
     "WAHLUMFRAGENDATENBANK_TEST_LIVE" => "FALSE",
-    "WAHLUMFRAGENDATENBANK_APIKEY" => "NONE",
   })
 
   live = env["WAHLUMFRAGENDATENBANK_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["WAHLUMFRAGENDATENBANK_APIKEY"],
     }
     client = WahlumfragenDatenbankSDK.new(merged_opts)
     return {

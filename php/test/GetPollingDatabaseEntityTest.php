@@ -86,7 +86,6 @@ function get_polling_database_basic_setup($extra)
         "WAHLUMFRAGENDATENBANK_TEST_GET_POLLING_DATABASE_ENTID" => $idmap,
         "WAHLUMFRAGENDATENBANK_TEST_LIVE" => "FALSE",
         "WAHLUMFRAGENDATENBANK_TEST_EXPLAIN" => "FALSE",
-        "WAHLUMFRAGENDATENBANK_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +97,6 @@ function get_polling_database_basic_setup($extra)
     if ($env["WAHLUMFRAGENDATENBANK_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["WAHLUMFRAGENDATENBANK_APIKEY"],
             ],
             $extra ?? [],
         ]);
