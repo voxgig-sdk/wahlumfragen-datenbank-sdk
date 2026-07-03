@@ -74,12 +74,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'WAHLUMFRAGENDATENBANK_TEST_METADATA_ENTID': {},
     'WAHLUMFRAGENDATENBANK_TEST_LIVE': 'FALSE',
+    'WAHLUMFRAGENDATENBANK_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.WAHLUMFRAGENDATENBANK_TEST_LIVE
 
   if (live) {
     const client = new WahlumfragenDatenbankSDK({
+      apikey: env.WAHLUMFRAGENDATENBANK_APIKEY,
     })
 
     let idmap: any = env['WAHLUMFRAGENDATENBANK_TEST_METADATA_ENTID']

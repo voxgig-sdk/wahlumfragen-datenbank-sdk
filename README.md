@@ -1,22 +1,8 @@
 # WahlumfragenDatenbank SDK
 
-Access DAWUM's open database of German federal, state, and European election polls in JSON
+Wahlumfragen Datenbank API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Wahlumfragen Datenbank API
-
-[DAWUM](https://dawum.de) (Datenbank für Wahlumfragen) is a German project run by Philipp Guttmann that aggregates publicly published opinion polls for elections in Germany and Europe. The API exposes the same underlying dataset that powers the dawum.de website, served as JSON over HTTPS.
-
-What you get from the API:
-
-- A full polling database covering the Bundestag, 16 state parliaments (Landtage), and the European Parliament
-- Surveys from established institutes such as Infratest dimap, Forsa, INSA, YouGov, and Allensbach
-- Per-survey metadata: date, survey period, sample size, parliament, institute, commissioning media organisation ("Tasker"), and methodology (telephone, online, in-person, mixed)
-- Result percentages broken down by political party (CDU/CSU, SPD, Grüne, FDP, AfD, Linke, BSW, Freie Wähler, and others)
-- A separate feed of the most recent surveys for lightweight polling consumers
-
-Operational notes: the endpoints are public and require no authentication, CORS is enabled, and responses are plain JSON. Data is refreshed as new polls are published.
 
 ## Try it
 
@@ -50,29 +36,31 @@ gem install wahlumfragen-datenbank-sdk
 luarocks install wahlumfragen-datenbank-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { WahlumfragenDatenbankSDK } from 'wahlumfragen-datenbank'
 
-const client = new WahlumfragenDatenbankSDK({})
+const client = new WahlumfragenDatenbankSDK({
+  apikey: process.env.WAHLUMFRAGEN-DATENBANK_APIKEY,
+})
 
 // List all getpollingdatabases
 const getpollingdatabases = await client.GetPollingDatabase().list()
+console.log(getpollingdatabases.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -102,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **GetPollingDatabase** | Returns the full DAWUM polling database as a single JSON document, including parliaments, parties, institutes, taskers, methods, and surveys (`GET /`). | `/` |
-| **Metadata** | Returns a lighter feed of the newest surveys, suitable for clients that only need the most recent polling figures (`GET /newest_surveys.json`). | `/last_update.txt` |
+| **GetPollingDatabase** |  | `/` |
+| **Metadata** |  | `/last_update.txt` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -113,12 +101,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from wahlumfragendatenbank_sdk import WahlumfragenDatenbankSDK
 
-client = WahlumfragenDatenbankSDK({})
+client = WahlumfragenDatenbankSDK({
+    "apikey": os.environ.get("WAHLUMFRAGEN-DATENBANK_APIKEY"),
+})
 
 # List all getpollingdatabases
-getpollingdatabases, err = client.GetPollingDatabase(None).list(None, None)
+getpollingdatabases, err = client.GetPollingDatabase().list()
+print(getpollingdatabases)
 ```
 
 ### PHP
@@ -127,10 +119,13 @@ getpollingdatabases, err = client.GetPollingDatabase(None).list(None, None)
 <?php
 require_once 'wahlumfragendatenbank_sdk.php';
 
-$client = new WahlumfragenDatenbankSDK([]);
+$client = new WahlumfragenDatenbankSDK([
+    "apikey" => getenv("WAHLUMFRAGEN-DATENBANK_APIKEY"),
+]);
 
 // List all getpollingdatabases
-[$getpollingdatabases, $err] = $client->GetPollingDatabase(null)->list(null, null);
+[$getpollingdatabases, $err] = $client->GetPollingDatabase()->list();
+print_r($getpollingdatabases);
 ```
 
 ### Golang
@@ -138,10 +133,13 @@ $client = new WahlumfragenDatenbankSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go"
 
-client := sdk.NewWahlumfragenDatenbankSDK(map[string]any{})
+client := sdk.NewWahlumfragenDatenbankSDK(map[string]any{
+    "apikey": os.Getenv("WAHLUMFRAGEN-DATENBANK_APIKEY"),
+})
 
 // List all getpollingdatabases
 getpollingdatabases, err := client.GetPollingDatabase(nil).List(nil, nil)
+fmt.Println(getpollingdatabases)
 ```
 
 ### Ruby
@@ -149,10 +147,13 @@ getpollingdatabases, err := client.GetPollingDatabase(nil).List(nil, nil)
 ```ruby
 require_relative "WahlumfragenDatenbank_sdk"
 
-client = WahlumfragenDatenbankSDK.new({})
+client = WahlumfragenDatenbankSDK.new({
+  "apikey" => ENV["WAHLUMFRAGEN-DATENBANK_APIKEY"],
+})
 
 # List all getpollingdatabases
-getpollingdatabases, err = client.GetPollingDatabase(nil).list(nil, nil)
+getpollingdatabases, err = client.GetPollingDatabase().list
+puts getpollingdatabases
 ```
 
 ### Lua
@@ -160,10 +161,13 @@ getpollingdatabases, err = client.GetPollingDatabase(nil).list(nil, nil)
 ```lua
 local sdk = require("wahlumfragen-datenbank_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("WAHLUMFRAGEN-DATENBANK_APIKEY"),
+})
 
 -- List all getpollingdatabases
-local getpollingdatabases, err = client:GetPollingDatabase(nil):list(nil, nil)
+local getpollingdatabases, err = client:GetPollingDatabase():list()
+print(getpollingdatabases)
 ```
 
 ## Unit testing in offline mode
@@ -182,25 +186,21 @@ const result = await client.GetPollingDatabase().load({ id: 'test01' })
 ### Python
 
 ```python
-client = WahlumfragenDatenbankSDK.test(None, None)
-result, err = client.GetPollingDatabase(None).load(
-    {"id": "test01"}, None
-)
+client = WahlumfragenDatenbankSDK.test()
+result, err = client.GetPollingDatabase().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = WahlumfragenDatenbankSDK::test(null, null);
-[$result, $err] = $client->GetPollingDatabase(null)->load(
-    ["id" => "test01"], null
-);
+$client = WahlumfragenDatenbankSDK::test();
+[$result, $err] = $client->GetPollingDatabase()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.GetPollingDatabase(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -209,19 +209,15 @@ result, err := client.GetPollingDatabase(nil).Load(
 ### Ruby
 
 ```ruby
-client = WahlumfragenDatenbankSDK.test(nil, nil)
-result, err = client.GetPollingDatabase(nil).load(
-  { "id" => "test01" }, nil
-)
+client = WahlumfragenDatenbankSDK.test
+result, err = client.GetPollingDatabase().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:GetPollingDatabase(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:GetPollingDatabase():load({ id = "test01" })
 ```
 
 ## How it works
@@ -325,16 +321,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Wahlumfragen Datenbank API
-
-- Upstream: [https://dawum.de](https://dawum.de)
-- API docs: [https://api.dawum.de](https://api.dawum.de)
-
-- Licensed under the [ODC Open Database License (ODC-ODbL 1.0)](https://opendatacommons.org/licenses/odbl/1-0/)
-- Publisher: dawum.de (Dipl.-Jur. Philipp Guttmann)
-- Attribution and share-alike are required for derivative databases
-- Individual poll figures remain the property of the respective polling institutes
 
 ---
 

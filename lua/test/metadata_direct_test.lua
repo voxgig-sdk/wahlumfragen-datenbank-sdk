@@ -62,12 +62,14 @@ function metadata_direct_setup(mockres)
   local env = runner.env_override({
     ["WAHLUMFRAGENDATENBANK_TEST_METADATA_ENTID"] = {},
     ["WAHLUMFRAGENDATENBANK_TEST_LIVE"] = "FALSE",
+    ["WAHLUMFRAGENDATENBANK_APIKEY"] = "NONE",
   })
 
   local live = env["WAHLUMFRAGENDATENBANK_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["WAHLUMFRAGENDATENBANK_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

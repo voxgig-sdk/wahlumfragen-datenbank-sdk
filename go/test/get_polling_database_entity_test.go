@@ -119,6 +119,7 @@ func get_polling_databaseBasicSetup(extra map[string]any) *entityTestSetup {
 		"WAHLUMFRAGENDATENBANK_TEST_GET_POLLING_DATABASE_ENTID": idmap,
 		"WAHLUMFRAGENDATENBANK_TEST_LIVE":      "FALSE",
 		"WAHLUMFRAGENDATENBANK_TEST_EXPLAIN":   "FALSE",
+		"WAHLUMFRAGENDATENBANK_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["WAHLUMFRAGENDATENBANK_TEST_GET_POLLING_DATABASE_ENTID"])
@@ -129,6 +130,7 @@ func get_polling_databaseBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["WAHLUMFRAGENDATENBANK_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["WAHLUMFRAGENDATENBANK_APIKEY"],
 			},
 			extra,
 		})

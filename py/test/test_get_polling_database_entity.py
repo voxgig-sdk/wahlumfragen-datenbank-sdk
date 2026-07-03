@@ -92,6 +92,7 @@ def _get_polling_database_basic_setup(extra):
         "WAHLUMFRAGENDATENBANK_TEST_GET_POLLING_DATABASE_ENTID": idmap,
         "WAHLUMFRAGENDATENBANK_TEST_LIVE": "FALSE",
         "WAHLUMFRAGENDATENBANK_TEST_EXPLAIN": "FALSE",
+        "WAHLUMFRAGENDATENBANK_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ def _get_polling_database_basic_setup(extra):
     if env.get("WAHLUMFRAGENDATENBANK_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("WAHLUMFRAGENDATENBANK_APIKEY"),
             },
             extra or {},
         ])

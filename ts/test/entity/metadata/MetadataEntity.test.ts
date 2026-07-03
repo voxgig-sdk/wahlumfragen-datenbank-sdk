@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'WAHLUMFRAGEN_DATENBANK_TEST_METADATA_ENTID': idmap,
     'WAHLUMFRAGEN_DATENBANK_TEST_LIVE': 'FALSE',
     'WAHLUMFRAGEN_DATENBANK_TEST_EXPLAIN': 'FALSE',
+    'WAHLUMFRAGEN_DATENBANK_APIKEY': 'NONE',
   })
 
   idmap = env['WAHLUMFRAGEN_DATENBANK_TEST_METADATA_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new WahlumfragenDatenbankSDK(merge([
       {
+        apikey: env.WAHLUMFRAGEN_DATENBANK_APIKEY,
       },
       extra
     ]))
