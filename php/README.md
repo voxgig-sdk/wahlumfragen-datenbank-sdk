@@ -10,7 +10,7 @@ The PHP SDK for the WahlumfragenDatenbank API — an entity-oriented client usin
 
 ## Install
 ```bash
-composer require voxgig/wahlumfragen-datenbank-sdk
+composer require voxgig-sdk/wahlumfragen-datenbank
 ```
 
 

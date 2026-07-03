@@ -10,13 +10,13 @@ The Ruby SDK for the WahlumfragenDatenbank API — an entity-oriented client usi
 
 ## Install
 ```bash
-gem install wahlumfragen-datenbank-sdk
+gem install voxgig-sdk-wahlumfragen-datenbank
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "wahlumfragen-datenbank-sdk"
+gem "voxgig-sdk-wahlumfragen-datenbank"
 ```
 
 Then run:

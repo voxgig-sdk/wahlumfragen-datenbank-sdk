@@ -10,7 +10,7 @@ The Python SDK for the WahlumfragenDatenbank API — an entity-oriented client f
 
 ## Install
 ```bash
-pip install wahlumfragen-datenbank-sdk
+pip install voxgig-sdk-wahlumfragen-datenbank
 ```
 
 Or install from source:

@@ -10,7 +10,7 @@ The Lua SDK for the WahlumfragenDatenbank API — an entity-oriented client usin
 
 ## Install
 ```bash
-luarocks install wahlumfragen-datenbank-sdk
+luarocks install voxgig-sdk-wahlumfragen-datenbank
 ```
 
 If the module is not yet published, add the source directory to

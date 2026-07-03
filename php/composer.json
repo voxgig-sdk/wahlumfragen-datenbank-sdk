@@ -1,8 +1,17 @@
 {
   "name": "voxgig-sdk/wahlumfragen-datenbank",
-  "description": "WahlumfragenDatenbank SDK for PHP",
+  "description": "Unofficial generated PHP SDK for the Wahlumfragen Datenbank public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
+  "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "wahlumfragen-datenbank"],
+  "homepage": "https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk",
   "license": "MIT",
+  "authors": [
+    { "name": "Voxgig", "homepage": "https://voxgig.com" }
+  ],
+  "support": {
+    "issues": "https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/issues",
+    "source": "https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk"
+  },
   "minimum-stability": "stable",
   "require": {
     "php": ">=8.2"

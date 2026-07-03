@@ -10,7 +10,7 @@ The TypeScript SDK for the WahlumfragenDatenbank API — a type-safe, entity-ori
 
 ## Install
 ```bash
-npm install wahlumfragen-datenbank
+npm install @voxgig-sdk/wahlumfragen-datenbank
 ```
 ## Tutorial: your first API call
 
