@@ -121,7 +121,7 @@ Alias for `WahlumfragenDatenbankSDK.test()`.
 ## GetPollingDatabaseEntity
 
 ```ts
-const get_polling_database = client.get_polling_database
+const get_polling_database = client.GetPollingDatabase()
 ```
 
 ### Fields
@@ -144,7 +144,7 @@ const get_polling_database = client.get_polling_database
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.get_polling_database.list()
+const results = await client.GetPollingDatabase().list()
 ```
 
 ### Common Methods
@@ -178,7 +178,7 @@ Return a copy of the entity options.
 ## MetadataEntity
 
 ```ts
-const metadata = client.metadata
+const metadata = client.Metadata()
 ```
 
 ### Operations
@@ -188,7 +188,7 @@ const metadata = client.metadata
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.metadata.load({ id: 'metadata_id' })
+const result = await client.Metadata().load({ id: 'metadata_id' })
 ```
 
 ### Common Methods

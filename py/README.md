@@ -31,14 +31,16 @@ from wahlumfragendatenbank_sdk import WahlumfragenDatenbankSDK
 client = WahlumfragenDatenbankSDK()
 ```
 
-### 2. List getpollingdatabases
+### 2. List getpollingdatabase records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.getpollingdatabase.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    getpollingdatabases = client.GetPollingDatabase().list({})
+    for getpollingdatabase in getpollingdatabases:
+        print(getpollingdatabase)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -86,8 +88,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = WahlumfragenDatenbankSDK.test()
 
-result = client.getpollingdatabase.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+getpollingdatabase = client.GetPollingDatabase().load({"id": "test01"})
+# getpollingdatabase contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -237,7 +240,7 @@ API path: `/last_update.txt`
 
 ### GetPollingDatabase
 
-Create an instance: `const get_polling_database = client.get_polling_database`
+Create an instance: `get_polling_database = client.GetPollingDatabase()`
 
 #### Operations
 
@@ -260,14 +263,14 @@ Create an instance: `const get_polling_database = client.get_polling_database`
 
 #### Example: List
 
-```ts
-const get_polling_databases = await client.get_polling_database.list()
+```python
+get_polling_databases = client.GetPollingDatabase().list({})
 ```
 
 
 ### Metadata
 
-Create an instance: `const metadata = client.metadata`
+Create an instance: `metadata = client.Metadata()`
 
 #### Operations
 
@@ -277,8 +280,8 @@ Create an instance: `const metadata = client.metadata`
 
 #### Example: Load
 
-```ts
-const metadata = await client.metadata.load({ id: 'metadata_id' })
+```python
+metadata = client.Metadata().load({"id": "metadata_id"})
 ```
 
 
@@ -352,7 +355,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-getpollingdatabase = client.getpollingdatabase
+getpollingdatabase = client.GetPollingDatabase()
 getpollingdatabase.load({"id": "example_id"})
 
 # getpollingdatabase.data_get() now returns the loaded getpollingdatabase data

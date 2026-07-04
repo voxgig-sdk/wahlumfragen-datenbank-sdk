@@ -26,9 +26,11 @@ import { WahlumfragenDatenbankSDK } from '@voxgig-sdk/wahlumfragen-datenbank'
 
 const client = new WahlumfragenDatenbankSDK()
 
-// List all getpollingdatabases
-const getpollingdatabases = await client.getpollingdatabase.list()
-console.log(getpollingdatabases.data)
+// List all getpollingdatabases (returns GetPollingDatabase[])
+const getpollingdatabases = await client.GetPollingDatabase().list()
+for (const getpollingdatabase of getpollingdatabases) {
+  console.log(getpollingdatabase)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,9 +86,10 @@ from wahlumfragendatenbank_sdk import WahlumfragenDatenbankSDK
 
 client = WahlumfragenDatenbankSDK()
 
-# List all getpollingdatabases
-getpollingdatabases = client.getpollingdatabase.list()
-print(getpollingdatabases)
+# List all getpollingdatabases (returns a list, raises on error)
+getpollingdatabases = client.GetPollingDatabase().list({})
+for getpollingdatabase in getpollingdatabases:
+    print(getpollingdatabase)
 ```
 
 ### PHP
@@ -97,8 +100,8 @@ require_once 'wahlumfragendatenbank_sdk.php';
 
 $client = new WahlumfragenDatenbankSDK();
 
-// List all getpollingdatabases (throws on error)
-$getpollingdatabases = $client->getpollingdatabase()->list();
+// List all getpollingdatabases (returns an array; throws on error)
+$getpollingdatabases = $client->GetPollingDatabase()->list();
 print_r($getpollingdatabases);
 ```
 
@@ -121,8 +124,8 @@ require_relative "WahlumfragenDatenbank_sdk"
 
 client = WahlumfragenDatenbankSDK.new
 
-# List all getpollingdatabases
-getpollingdatabases = client.getpollingdatabase.list
+# List all getpollingdatabases (returns an Array; raises on error)
+getpollingdatabases = client.GetPollingDatabase.list
 puts getpollingdatabases
 ```
 
@@ -134,7 +137,7 @@ local sdk = require("wahlumfragen-datenbank_sdk")
 local client = sdk.new()
 
 -- List all getpollingdatabases
-local getpollingdatabases, err = client:getpollingdatabase():list()
+local getpollingdatabases, err = client:GetPollingDatabase():list()
 print(getpollingdatabases)
 ```
 
@@ -147,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = WahlumfragenDatenbankSDK.test()
-const result = await client.getpollingdatabase.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const getpollingdatabase = await client.GetPollingDatabase().load({ id: 'test01' })
+// getpollingdatabase is a bare GetPollingDatabase populated with mock data
+console.log(getpollingdatabase)
 ```
 
 ### Python
 
 ```python
 client = WahlumfragenDatenbankSDK.test()
-result = client.getpollingdatabase.load({"id": "test01"})
+getpollingdatabase = client.GetPollingDatabase().load({"id": "test01"})
+print(getpollingdatabase)
 ```
 
 ### PHP
 
 ```php
-$client = WahlumfragenDatenbankSDK::test();
-$result = $client->getpollingdatabase()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = WahlumfragenDatenbankSDK::test([
+    "entity" => ["getpollingdatabase" => ["test01" => ["id" => "test01"]]],
+]);
+$getpollingdatabase = $client->GetPollingDatabase()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -177,15 +185,18 @@ result, err := client.GetPollingDatabase(nil).Load(
 ### Ruby
 
 ```ruby
-client = WahlumfragenDatenbankSDK.test
-result = client.getpollingdatabase.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = WahlumfragenDatenbankSDK.test({
+  "entity" => { "getpollingdatabase" => { "test01" => { "id" => "test01" } } },
+})
+getpollingdatabase = client.GetPollingDatabase.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:getpollingdatabase():load({ id = "test01" })
+local result, err = client:GetPollingDatabase():load({ id = "test01" })
 ```
 
 ## How it works
@@ -233,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

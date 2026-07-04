@@ -220,41 +220,21 @@ class WahlumfragenDatenbankSDK:
         }
 
 
-    @property
-    def get_polling_database(self):
-        """Idiomatic facade: client.get_polling_database.list() / client.get_polling_database.load({"id": ...})."""
-        from entity.get_polling_database_entity import GetPollingDatabaseEntity
-        cached = getattr(self, "_get_polling_database", None)
-        if cached is None:
-            cached = GetPollingDatabaseEntity(self, None)
-            self._get_polling_database = cached
-        return cached
-
-    def GetPollingDatabase(self, data=None):
-        # Deprecated: use client.get_polling_database instead.
+    def GetPollingDatabase(self, data=None) -> "GetPollingDatabaseEntity":
+        """Entity factory: client.GetPollingDatabase().list({}) / client.GetPollingDatabase().load({"id": ...})."""
         from entity.get_polling_database_entity import GetPollingDatabaseEntity
         return GetPollingDatabaseEntity(self, data)
 
 
-    @property
-    def metadata(self):
-        """Idiomatic facade: client.metadata.list() / client.metadata.load({"id": ...})."""
-        from entity.metadata_entity import MetadataEntity
-        cached = getattr(self, "_metadata", None)
-        if cached is None:
-            cached = MetadataEntity(self, None)
-            self._metadata = cached
-        return cached
-
-    def Metadata(self, data=None):
-        # Deprecated: use client.metadata instead.
+    def Metadata(self, data=None) -> "MetadataEntity":
+        """Entity factory: client.Metadata().list({}) / client.Metadata().load({"id": ...})."""
         from entity.metadata_entity import MetadataEntity
         return MetadataEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "WahlumfragenDatenbankSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class WahlumfragenDatenbankSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.get_polling_database_entity import GetPollingDatabaseEntity
+    from entity.metadata_entity import MetadataEntity

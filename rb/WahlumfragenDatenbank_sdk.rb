@@ -208,26 +208,14 @@ class WahlumfragenDatenbankSDK
   end
 
 
-  # Idiomatic facade: client.get_polling_database.list / client.get_polling_database.load({ "id" => ... })
-  def get_polling_database
-    require_relative 'entity/get_polling_database_entity'
-    @get_polling_database ||= GetPollingDatabaseEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.get_polling_database instead.
+  # Canonical facade: client.GetPollingDatabase.list / client.GetPollingDatabase.load({ "id" => ... })
   def GetPollingDatabase(data = nil)
     require_relative 'entity/get_polling_database_entity'
     GetPollingDatabaseEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.metadata.list / client.metadata.load({ "id" => ... })
-  def metadata
-    require_relative 'entity/metadata_entity'
-    @metadata ||= MetadataEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.metadata instead.
+  # Canonical facade: client.Metadata.list / client.Metadata.load({ "id" => ... })
   def Metadata(data = nil)
     require_relative 'entity/metadata_entity'
     MetadataEntity.new(self, data)

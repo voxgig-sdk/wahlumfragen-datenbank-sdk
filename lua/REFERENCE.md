@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## GetPollingDatabaseEntity
 
 ```lua
-local get_polling_database = client:get_polling_database(nil)
+local get_polling_database = client:GetPollingDatabase(nil)
 ```
 
 ### Fields
@@ -110,7 +110,7 @@ local get_polling_database = client:get_polling_database(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:get_polling_database():list()
+local results, err = client:GetPollingDatabase():list()
 ```
 
 ### Common Methods
@@ -146,7 +146,7 @@ Return the entity name.
 ## MetadataEntity
 
 ```lua
-local metadata = client:metadata(nil)
+local metadata = client:Metadata(nil)
 ```
 
 ### Operations
@@ -156,7 +156,7 @@ local metadata = client:metadata(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:metadata():load({ id = "metadata_id" })
+local result, err = client:Metadata():load({ id = "metadata_id" })
 ```
 
 ### Common Methods

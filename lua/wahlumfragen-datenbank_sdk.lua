@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:get_polling_database():list() / client:get_polling_database():load({ id = ... })
-function WahlumfragenDatenbankSDK:get_polling_database(data)
+-- Idiomatic facade: client:GetPollingDatabase():list() / client:GetPollingDatabase():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function WahlumfragenDatenbankSDK:GetPollingDatabase(data)
   local EntityMod = require("entity.get_polling_database_entity")
   if data == nil then
     if self._get_polling_database == nil then
@@ -256,15 +257,10 @@ function WahlumfragenDatenbankSDK:get_polling_database(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:get_polling_database() instead.
-function WahlumfragenDatenbankSDK:GetPollingDatabase(data)
-  local EntityMod = require("entity.get_polling_database_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:metadata():list() / client:metadata():load({ id = ... })
-function WahlumfragenDatenbankSDK:metadata(data)
+-- Idiomatic facade: client:Metadata():list() / client:Metadata():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function WahlumfragenDatenbankSDK:Metadata(data)
   local EntityMod = require("entity.metadata_entity")
   if data == nil then
     if self._metadata == nil then
@@ -272,12 +268,6 @@ function WahlumfragenDatenbankSDK:metadata(data)
     end
     return self._metadata
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:metadata() instead.
-function WahlumfragenDatenbankSDK:Metadata(data)
-  local EntityMod = require("entity.metadata_entity")
   return EntityMod.new(self, data)
 end
 

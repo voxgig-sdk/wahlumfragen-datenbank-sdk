@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## GetPollingDatabaseEntity
 
 ```ruby
-get_polling_database = client.get_polling_database
+get_polling_database = client.GetPollingDatabase
 ```
 
 ### Fields
@@ -113,7 +113,7 @@ get_polling_database = client.get_polling_database
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.get_polling_database.list(nil)
+results = client.GetPollingDatabase.list(nil)
 ```
 
 ### Common Methods
@@ -149,7 +149,7 @@ Return the entity name.
 ## MetadataEntity
 
 ```ruby
-metadata = client.metadata
+metadata = client.Metadata
 ```
 
 ### Operations
@@ -159,7 +159,7 @@ metadata = client.metadata
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.metadata.load({ "id" => "metadata_id" })
+result = client.Metadata.load({ "id" => "metadata_id" })
 ```
 
 ### Common Methods

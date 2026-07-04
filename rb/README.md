@@ -28,16 +28,14 @@ require_relative "WahlumfragenDatenbank_sdk"
 client = WahlumfragenDatenbankSDK.new
 ```
 
-### 2. List getpollingdatabases
+### 2. List getpollingdatabase records
 
 ```ruby
 begin
-  result = client.getpollingdatabase.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of GetPollingDatabase records — iterate directly.
+  getpollingdatabases = client.GetPollingDatabase.list
+  getpollingdatabases.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = WahlumfragenDatenbankSDK.test
+client = WahlumfragenDatenbankSDK.test({
+  "entity" => { "getpollingdatabase" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.getpollingdatabase.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+getpollingdatabase = client.GetPollingDatabase.load({ "id" => "test01" })
+puts getpollingdatabase
 ```
 
 ### Use a custom fetch function
@@ -240,7 +242,7 @@ API path: `/last_update.txt`
 
 ### GetPollingDatabase
 
-Create an instance: `const get_polling_database = client.get_polling_database`
+Create an instance: `get_polling_database = client.GetPollingDatabase`
 
 #### Operations
 
@@ -263,14 +265,15 @@ Create an instance: `const get_polling_database = client.get_polling_database`
 
 #### Example: List
 
-```ts
-const get_polling_databases = await client.get_polling_database.list()
+```ruby
+# list returns an Array of GetPollingDatabase records (raises on error).
+get_polling_databases = client.GetPollingDatabase.list
 ```
 
 
 ### Metadata
 
-Create an instance: `const metadata = client.metadata`
+Create an instance: `metadata = client.Metadata`
 
 #### Operations
 
@@ -280,8 +283,9 @@ Create an instance: `const metadata = client.metadata`
 
 #### Example: Load
 
-```ts
-const metadata = await client.metadata.load({ id: 'metadata_id' })
+```ruby
+# load returns the bare Metadata record (raises on error).
+metadata = client.Metadata.load({ "id" => "metadata_id" })
 ```
 
 
@@ -356,7 +360,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-getpollingdatabase = client.getpollingdatabase
+getpollingdatabase = client.GetPollingDatabase
 getpollingdatabase.load({ "id" => "example_id" })
 
 # getpollingdatabase.data_get now returns the loaded getpollingdatabase data

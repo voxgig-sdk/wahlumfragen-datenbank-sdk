@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## GetPollingDatabaseEntity
 
 ```python
-get_polling_database = client.get_polling_database
+get_polling_database = client.GetPollingDatabase()
 ```
 
 ### Fields
@@ -107,7 +107,9 @@ get_polling_database = client.get_polling_database
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.get_polling_database.list({})
+results = client.GetPollingDatabase().list({})
+for get_polling_database in results:
+    print(get_polling_database)
 ```
 
 ### Common Methods
@@ -142,7 +144,7 @@ Return the entity name.
 ## MetadataEntity
 
 ```python
-metadata = client.metadata
+metadata = client.Metadata()
 ```
 
 ### Operations
@@ -152,7 +154,7 @@ metadata = client.metadata
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.metadata.load({"id": "metadata_id"})
+result = client.Metadata().load({"id": "metadata_id"})
 ```
 
 ### Common Methods

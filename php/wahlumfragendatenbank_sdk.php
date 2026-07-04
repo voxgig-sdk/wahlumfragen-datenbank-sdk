@@ -233,10 +233,10 @@ class WahlumfragenDatenbankSDK
 
     private $_get_polling_database = null;
 
-    // Idiomatic facade: $client->get_polling_database()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GetPollingDatabase() (PHP method
-    // names are case-insensitive).
-    public function get_polling_database($data = null)
+    // Canonical facade: $client->GetPollingDatabase()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->get_polling_database()
+    // resolves here too.
+    public function GetPollingDatabase($data = null)
     {
         require_once __DIR__ . '/entity/get_polling_database_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class WahlumfragenDatenbankSDK
 
     private $_metadata = null;
 
-    // Idiomatic facade: $client->metadata()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Metadata() (PHP method
-    // names are case-insensitive).
-    public function metadata($data = null)
+    // Canonical facade: $client->Metadata()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->metadata()
+    // resolves here too.
+    public function Metadata($data = null)
     {
         require_once __DIR__ . '/entity/metadata_entity.php';
         if ($data === null) {

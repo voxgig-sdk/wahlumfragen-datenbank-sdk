@@ -4,43 +4,46 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class GetPollingDatabase:
+class GetPollingDatabaseRequired(TypedDict):
     date: str
     institute_id: str
     parliament_id: str
     result: dict
     tasker_id: str
-    method_id: Optional[str] = None
-    survey_period: Optional[dict] = None
-    surveyed_person: Optional[int] = None
 
 
-@dataclass
-class GetPollingDatabaseListMatch:
-    date: Optional[str] = None
-    institute_id: Optional[str] = None
-    method_id: Optional[str] = None
-    parliament_id: Optional[str] = None
-    result: Optional[dict] = None
-    survey_period: Optional[dict] = None
-    surveyed_person: Optional[int] = None
-    tasker_id: Optional[str] = None
+class GetPollingDatabase(GetPollingDatabaseRequired, total=False):
+    method_id: str
+    survey_period: dict
+    surveyed_person: int
 
 
-@dataclass
-class Metadata:
+class GetPollingDatabaseListMatch(TypedDict, total=False):
+    date: str
+    institute_id: str
+    method_id: str
+    parliament_id: str
+    result: dict
+    survey_period: dict
+    surveyed_person: int
+    tasker_id: str
+
+
+class Metadata(TypedDict):
     pass
 
 
-@dataclass
-class MetadataLoadMatch:
+class MetadataLoadMatch(TypedDict):
     pass
-

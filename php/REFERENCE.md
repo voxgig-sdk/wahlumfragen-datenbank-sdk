@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## GetPollingDatabaseEntity
 
 ```php
-$get_polling_database = $client->get_polling_database();
+$get_polling_database = $client->GetPollingDatabase();
 ```
 
 ### Fields
@@ -112,7 +112,7 @@ $get_polling_database = $client->get_polling_database();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->get_polling_database()->list([]);
+$results = $client->GetPollingDatabase()->list([]);
 ```
 
 ### Common Methods
@@ -148,7 +148,7 @@ Return the entity name.
 ## MetadataEntity
 
 ```php
-$metadata = $client->metadata();
+$metadata = $client->Metadata();
 ```
 
 ### Operations
@@ -158,7 +158,7 @@ $metadata = $client->metadata();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->metadata()->load(["id" => "metadata_id"]);
+$result = $client->Metadata()->load(["id" => "metadata_id"]);
 ```
 
 ### Common Methods

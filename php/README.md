@@ -29,18 +29,16 @@ require_once 'wahlumfragendatenbank_sdk.php';
 $client = new WahlumfragenDatenbankSDK();
 ```
 
-### 2. List getpollingdatabases
+### 2. List getpollingdatabase records
 
 ```php
 try {
-    $result = $client->getpollingdatabase()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of GetPollingDatabase records — iterate directly.
+    $getpollingdatabases = $client->GetPollingDatabase()->list();
+    foreach ($getpollingdatabases as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = WahlumfragenDatenbankSDK::test();
+$client = WahlumfragenDatenbankSDK::test([
+    "entity" => ["getpollingdatabase" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->getpollingdatabase()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$getpollingdatabase = $client->GetPollingDatabase()->load(["id" => "test01"]);
+print_r($getpollingdatabase);
 ```
 
 ### Use a custom fetch function
@@ -245,7 +247,7 @@ API path: `/last_update.txt`
 
 ### GetPollingDatabase
 
-Create an instance: `const get_polling_database = client.get_polling_database`
+Create an instance: `$get_polling_database = $client->GetPollingDatabase();`
 
 #### Operations
 
@@ -268,14 +270,15 @@ Create an instance: `const get_polling_database = client.get_polling_database`
 
 #### Example: List
 
-```ts
-const get_polling_databases = await client.get_polling_database.list()
+```php
+// list() returns an array of GetPollingDatabase records (throws on error).
+$get_polling_databases = $client->GetPollingDatabase()->list();
 ```
 
 
 ### Metadata
 
-Create an instance: `const metadata = client.metadata`
+Create an instance: `$metadata = $client->Metadata();`
 
 #### Operations
 
@@ -285,8 +288,9 @@ Create an instance: `const metadata = client.metadata`
 
 #### Example: Load
 
-```ts
-const metadata = await client.metadata.load({ id: 'metadata_id' })
+```php
+// load() returns the bare Metadata record (throws on error).
+$metadata = $client->Metadata()->load(["id" => "metadata_id"]);
 ```
 
 
@@ -361,7 +365,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$getpollingdatabase = $client->getpollingdatabase();
+$getpollingdatabase = $client->GetPollingDatabase();
 $getpollingdatabase->load(["id" => "example_id"]);
 
 // $getpollingdatabase->dataGet() now returns the loaded getpollingdatabase data

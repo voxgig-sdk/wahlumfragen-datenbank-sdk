@@ -205,28 +205,14 @@ class WahlumfragenDatenbankSDK {
 
 
 
-  _get_polling_database?: GetPollingDatabaseEntity
-
-  // Idiomatic facade: `client.get_polling_database.list()` / `client.get_polling_database.load({ id })`.
-  get get_polling_database(): GetPollingDatabaseEntity {
-    return (this._get_polling_database ??= new GetPollingDatabaseEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.get_polling_database` instead. */
+  // Entity access: `client.GetPollingDatabase().list()` / `client.GetPollingDatabase().load({ id })`.
   GetPollingDatabase(data?: any) {
     const self = this
     return new GetPollingDatabaseEntity(self,data)
   }
 
 
-  _metadata?: MetadataEntity
-
-  // Idiomatic facade: `client.metadata.list()` / `client.metadata.load({ id })`.
-  get metadata(): MetadataEntity {
-    return (this._metadata ??= new MetadataEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.metadata` instead. */
+  // Entity access: `client.Metadata().list()` / `client.Metadata().load({ id })`.
   Metadata(data?: any) {
     const self = this
     return new MetadataEntity(self,data)
