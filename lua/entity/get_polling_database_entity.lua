@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch GetPollingDatabaseListMatch
+---@param ctrl? table
+---@return GetPollingDatabase[]
+---@return string? err
 function GetPollingDatabaseEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

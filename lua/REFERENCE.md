@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## GetPollingDatabaseEntity
 
 ```lua
-local get_polling_database = client:GetPollingDatabase(nil)
+local get_polling_database = client:get_polling_database(nil)
 ```
 
 ### Fields
@@ -111,7 +110,7 @@ local get_polling_database = client:GetPollingDatabase(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:GetPollingDatabase():list()
+local results, err = client:get_polling_database():list()
 ```
 
 ### Common Methods
@@ -147,7 +146,7 @@ Return the entity name.
 ## MetadataEntity
 
 ```lua
-local metadata = client:Metadata(nil)
+local metadata = client:metadata(nil)
 ```
 
 ### Operations
@@ -157,7 +156,7 @@ local metadata = client:Metadata(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Metadata():load({ id = "metadata_id" })
+local result, err = client:metadata():load({ id = "metadata_id" })
 ```
 
 ### Common Methods

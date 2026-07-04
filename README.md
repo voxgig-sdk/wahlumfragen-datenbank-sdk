@@ -10,26 +10,24 @@ This is an unofficial SDK for the Wahlumfragen Datenbank public API, generated b
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/wahlumfragen-datenbank` | `npm install @voxgig-sdk/wahlumfragen-datenbank` |
-| Python | `voxgig-sdk-wahlumfragen-datenbank` | `pip install voxgig-sdk-wahlumfragen-datenbank` |
-| PHP | `voxgig-sdk/wahlumfragen-datenbank` | `composer require voxgig-sdk/wahlumfragen-datenbank` |
-| Golang | `github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go` | `go get github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go` |
-| Ruby | `voxgig-sdk-wahlumfragen-datenbank` | `gem install voxgig-sdk-wahlumfragen-datenbank` |
-| Lua | `voxgig-sdk-wahlumfragen-datenbank` | `luarocks install voxgig-sdk-wahlumfragen-datenbank` |
+| TypeScript | `@voxgig-sdk/wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases) |
+| Python | `voxgig-sdk-wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases) |
+| PHP | `voxgig-sdk/wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases) |
+| Golang | `github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go` | `go get github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go@latest` |
+| Ruby | `voxgig-sdk-wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases) |
+| Lua | `voxgig-sdk-wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases) |
 
 ## Quickstart
 
 ### TypeScript
 
 ```ts
-import { WahlumfragenDatenbankSDK } from 'wahlumfragen-datenbank'
+import { WahlumfragenDatenbankSDK } from '@voxgig-sdk/wahlumfragen-datenbank'
 
-const client = new WahlumfragenDatenbankSDK({
-  apikey: process.env.WAHLUMFRAGEN-DATENBANK_APIKEY,
-})
+const client = new WahlumfragenDatenbankSDK()
 
 // List all getpollingdatabases
-const getpollingdatabases = await client.GetPollingDatabase().list()
+const getpollingdatabases = await client.getpollingdatabase.list()
 console.log(getpollingdatabases.data)
 ```
 
@@ -71,8 +69,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **GetPollingDatabase** |  | `/` |
-| **Metadata** |  | `/last_update.txt` |
+| **GetPollingDatabase** | The GetPollingDatabase entity (list). | `/` |
+| **Metadata** | The Metadata entity (load). | `/last_update.txt` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -82,15 +80,12 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
-import os
 from wahlumfragendatenbank_sdk import WahlumfragenDatenbankSDK
 
-client = WahlumfragenDatenbankSDK({
-    "apikey": os.environ.get("WAHLUMFRAGEN-DATENBANK_APIKEY"),
-})
+client = WahlumfragenDatenbankSDK()
 
 # List all getpollingdatabases
-getpollingdatabases, err = client.GetPollingDatabase().list()
+getpollingdatabases = client.getpollingdatabase.list()
 print(getpollingdatabases)
 ```
 
@@ -100,12 +95,10 @@ print(getpollingdatabases)
 <?php
 require_once 'wahlumfragendatenbank_sdk.php';
 
-$client = new WahlumfragenDatenbankSDK([
-    "apikey" => getenv("WAHLUMFRAGEN-DATENBANK_APIKEY"),
-]);
+$client = new WahlumfragenDatenbankSDK();
 
-// List all getpollingdatabases
-[$getpollingdatabases, $err] = $client->GetPollingDatabase()->list();
+// List all getpollingdatabases (throws on error)
+$getpollingdatabases = $client->getpollingdatabase()->list();
 print_r($getpollingdatabases);
 ```
 
@@ -114,9 +107,7 @@ print_r($getpollingdatabases);
 ```go
 import sdk "github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go"
 
-client := sdk.NewWahlumfragenDatenbankSDK(map[string]any{
-    "apikey": os.Getenv("WAHLUMFRAGEN-DATENBANK_APIKEY"),
-})
+client := sdk.New()
 
 // List all getpollingdatabases
 getpollingdatabases, err := client.GetPollingDatabase(nil).List(nil, nil)
@@ -128,12 +119,10 @@ fmt.Println(getpollingdatabases)
 ```ruby
 require_relative "WahlumfragenDatenbank_sdk"
 
-client = WahlumfragenDatenbankSDK.new({
-  "apikey" => ENV["WAHLUMFRAGEN-DATENBANK_APIKEY"],
-})
+client = WahlumfragenDatenbankSDK.new
 
 # List all getpollingdatabases
-getpollingdatabases, err = client.GetPollingDatabase().list
+getpollingdatabases = client.getpollingdatabase.list
 puts getpollingdatabases
 ```
 
@@ -142,12 +131,10 @@ puts getpollingdatabases
 ```lua
 local sdk = require("wahlumfragen-datenbank_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("WAHLUMFRAGEN-DATENBANK_APIKEY"),
-})
+local client = sdk.new()
 
 -- List all getpollingdatabases
-local getpollingdatabases, err = client:GetPollingDatabase():list()
+local getpollingdatabases, err = client:getpollingdatabase():list()
 print(getpollingdatabases)
 ```
 
@@ -160,7 +147,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = WahlumfragenDatenbankSDK.test()
-const result = await client.GetPollingDatabase().load({ id: 'test01' })
+const result = await client.getpollingdatabase.load({ id: 'test01' })
 // result.ok === true, result.data contains mock data
 ```
 
@@ -168,14 +155,14 @@ const result = await client.GetPollingDatabase().load({ id: 'test01' })
 
 ```python
 client = WahlumfragenDatenbankSDK.test()
-result, err = client.GetPollingDatabase().load({"id": "test01"})
+result = client.getpollingdatabase.load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
 $client = WahlumfragenDatenbankSDK::test();
-[$result, $err] = $client->GetPollingDatabase()->load(["id" => "test01"]);
+$result = $client->getpollingdatabase()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -191,14 +178,14 @@ result, err := client.GetPollingDatabase(nil).Load(
 
 ```ruby
 client = WahlumfragenDatenbankSDK.test
-result, err = client.GetPollingDatabase().load({ "id" => "test01" })
+result = client.getpollingdatabase.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:GetPollingDatabase():load({ id = "test01" })
+local result, err = client:getpollingdatabase():load({ id = "test01" })
 ```
 
 ## How it works
@@ -251,7 +238,7 @@ console.log(result.data)
 
 **Python:**
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
@@ -260,7 +247,7 @@ result, err = client.direct({
 
 **PHP:**
 ```php
-[$result, $err] = $client->direct([
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
@@ -278,7 +265,7 @@ result, err := client.Direct(map[string]any{
 
 **Ruby:**
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },

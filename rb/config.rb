@@ -15,9 +15,6 @@ module WahlumfragenDatenbankConfig
       },
       "options" => {
         "base" => "https://api.dawum.de",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

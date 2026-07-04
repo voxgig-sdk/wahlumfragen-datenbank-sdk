@@ -85,6 +85,27 @@ func (e *MetadataEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Metadata; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *MetadataEntity) DataTyped(data ...Metadata) Metadata {
+	if len(data) > 0 {
+		return typedFrom[Metadata](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Metadata](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Metadata (all fields
+// optional at the wire level).
+func (e *MetadataEntity) MatchTyped(match ...Metadata) Metadata {
+	if len(match) > 0 {
+		return typedFrom[Metadata](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Metadata](e.Match())
+}
+
 
 func (e *MetadataEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *MetadataEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// MetadataLoadMatch and returns an Metadata. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *MetadataEntity) LoadTyped(reqmatch MetadataLoadMatch, ctrl map[string]any) (Metadata, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Metadata{}, err
+	}
+	return typedFrom[Metadata](res), nil
 }
 
 

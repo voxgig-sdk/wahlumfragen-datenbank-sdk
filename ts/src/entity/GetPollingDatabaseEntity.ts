@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  GetPollingDatabase,
+  GetPollingDatabaseListMatch,
+} from '../WahlumfragenDatenbankTypes'
 
 // TODO: needs Entity superclass
-class GetPollingDatabaseEntity extends WahlumfragenDatenbankEntityBase {
+class GetPollingDatabaseEntity extends WahlumfragenDatenbankEntityBase<GetPollingDatabase> {
 
   constructor(client: WahlumfragenDatenbankSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class GetPollingDatabaseEntity extends WahlumfragenDatenbankEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: GetPollingDatabaseListMatch, ctrl?: Control): Promise<GetPollingDatabase[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class GetPollingDatabaseEntity extends WahlumfragenDatenbankEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<GetPollingDatabase[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

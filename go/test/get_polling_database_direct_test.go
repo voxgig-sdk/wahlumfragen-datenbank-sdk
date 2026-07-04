@@ -93,14 +93,12 @@ func get_polling_databaseDirectSetup(mockres any) *get_polling_databaseDirectSet
 	env := envOverride(map[string]any{
 		"WAHLUMFRAGENDATENBANK_TEST_GET_POLLING_DATABASE_ENTID": map[string]any{},
 		"WAHLUMFRAGENDATENBANK_TEST_LIVE":    "FALSE",
-		"WAHLUMFRAGENDATENBANK_APIKEY":       "NONE",
 	})
 
 	live := env["WAHLUMFRAGENDATENBANK_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["WAHLUMFRAGENDATENBANK_APIKEY"],
 		}
 		client := sdk.NewWahlumfragenDatenbankSDK(mergedOpts)
 

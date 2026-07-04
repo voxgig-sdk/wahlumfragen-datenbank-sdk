@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `WahlumfragenDatenbankSDK.test()`.
 ## GetPollingDatabaseEntity
 
 ```ts
-const get_polling_database = client.GetPollingDatabase()
+const get_polling_database = client.get_polling_database
 ```
 
 ### Fields
@@ -145,7 +144,7 @@ const get_polling_database = client.GetPollingDatabase()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.GetPollingDatabase().list()
+const results = await client.get_polling_database.list()
 ```
 
 ### Common Methods
@@ -179,7 +178,7 @@ Return a copy of the entity options.
 ## MetadataEntity
 
 ```ts
-const metadata = client.Metadata()
+const metadata = client.metadata
 ```
 
 ### Operations
@@ -189,7 +188,7 @@ const metadata = client.Metadata()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Metadata().load({ id: 'metadata_id' })
+const result = await client.metadata.load({ id: 'metadata_id' })
 ```
 
 ### Common Methods

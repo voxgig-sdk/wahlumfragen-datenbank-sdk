@@ -117,7 +117,6 @@ func metadataBasicSetup(extra map[string]any) *entityTestSetup {
 		"WAHLUMFRAGENDATENBANK_TEST_METADATA_ENTID": idmap,
 		"WAHLUMFRAGENDATENBANK_TEST_LIVE":      "FALSE",
 		"WAHLUMFRAGENDATENBANK_TEST_EXPLAIN":   "FALSE",
-		"WAHLUMFRAGENDATENBANK_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["WAHLUMFRAGENDATENBANK_TEST_METADATA_ENTID"])
@@ -128,7 +127,6 @@ func metadataBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["WAHLUMFRAGENDATENBANK_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["WAHLUMFRAGENDATENBANK_APIKEY"],
 			},
 			extra,
 		})

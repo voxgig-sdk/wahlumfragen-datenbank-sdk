@@ -3,6 +3,8 @@
 import { GetPollingDatabaseEntity } from './entity/GetPollingDatabaseEntity'
 import { MetadataEntity } from './entity/MetadataEntity'
 
+export type * from './WahlumfragenDatenbankTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class WahlumfragenDatenbankSDK {
 
 
 
+  _get_polling_database?: GetPollingDatabaseEntity
+
+  // Idiomatic facade: `client.get_polling_database.list()` / `client.get_polling_database.load({ id })`.
+  get get_polling_database(): GetPollingDatabaseEntity {
+    return (this._get_polling_database ??= new GetPollingDatabaseEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.get_polling_database` instead. */
   GetPollingDatabase(data?: any) {
     const self = this
     return new GetPollingDatabaseEntity(self,data)
   }
 
 
+  _metadata?: MetadataEntity
+
+  // Idiomatic facade: `client.metadata.list()` / `client.metadata.load({ id })`.
+  get metadata(): MetadataEntity {
+    return (this._metadata ??= new MetadataEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.metadata` instead. */
   Metadata(data?: any) {
     const self = this
     return new MetadataEntity(self,data)

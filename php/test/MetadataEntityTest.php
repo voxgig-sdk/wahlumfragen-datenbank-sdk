@@ -49,8 +49,7 @@ class MetadataEntityTest extends TestCase
         // LOAD
         $metadata_ref01_ent = $client->Metadata(null);
         $metadata_ref01_match_dt0 = [];
-        [$metadata_ref01_data_dt0_loaded, $err] = $metadata_ref01_ent->load($metadata_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $metadata_ref01_data_dt0_loaded = $metadata_ref01_ent->load($metadata_ref01_match_dt0, null);
         $this->assertNotNull($metadata_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function metadata_basic_setup($extra)
         "WAHLUMFRAGENDATENBANK_TEST_METADATA_ENTID" => $idmap,
         "WAHLUMFRAGENDATENBANK_TEST_LIVE" => "FALSE",
         "WAHLUMFRAGENDATENBANK_TEST_EXPLAIN" => "FALSE",
-        "WAHLUMFRAGENDATENBANK_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function metadata_basic_setup($extra)
     if ($env["WAHLUMFRAGENDATENBANK_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["WAHLUMFRAGENDATENBANK_APIKEY"],
             ],
             $extra ?? [],
         ]);

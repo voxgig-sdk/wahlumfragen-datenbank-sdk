@@ -9,9 +9,12 @@ The TypeScript SDK for the WahlumfragenDatenbank API — a type-safe, entity-ori
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/wahlumfragen-datenbank
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { WahlumfragenDatenbankSDK } from 'wahlumfragen-datenbank'
+import { WahlumfragenDatenbankSDK } from '@voxgig-sdk/wahlumfragen-datenbank'
 
-const client = new WahlumfragenDatenbankSDK({
-  apikey: process.env.WAHLUMFRAGEN-DATENBANK_APIKEY,
-})
+const client = new WahlumfragenDatenbankSDK()
 ```
 
 ### 2. List getpollingdatabases
 
 ```ts
-const result = await client.GetPollingDatabase().list()
+const result = await client.getpollingdatabase.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -81,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = WahlumfragenDatenbankSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.getpollingdatabase.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -89,7 +90,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new WahlumfragenDatenbankSDK({ apikey: '...' })
+const client = new WahlumfragenDatenbankSDK()
 const testClient = client.tester()
 ```
 
@@ -98,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.getpollingdatabase
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -125,7 +126,6 @@ const logger = {
 }
 
 const client = new WahlumfragenDatenbankSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -135,8 +135,7 @@ const client = new WahlumfragenDatenbankSDK({
 Create a `.env.local` file at the project root:
 
 ```
-WAHLUMFRAGEN-DATENBANK_TEST_LIVE=TRUE
-WAHLUMFRAGEN-DATENBANK_APIKEY=<your-key>
+WAHLUMFRAGEN_DATENBANK_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -154,7 +153,6 @@ cd ts && npm test
 
 ```ts
 new WahlumfragenDatenbankSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -165,7 +163,6 @@ new WahlumfragenDatenbankSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -285,7 +282,7 @@ API path: `/last_update.txt`
 
 ### GetPollingDatabase
 
-Create an instance: `const get_polling_database = client.GetPollingDatabase()`
+Create an instance: `const get_polling_database = client.get_polling_database`
 
 #### Operations
 
@@ -309,13 +306,13 @@ Create an instance: `const get_polling_database = client.GetPollingDatabase()`
 #### Example: List
 
 ```ts
-const get_polling_databases = await client.GetPollingDatabase().list()
+const get_polling_databases = await client.get_polling_database.list()
 ```
 
 
 ### Metadata
 
-Create an instance: `const metadata = client.Metadata()`
+Create an instance: `const metadata = client.metadata`
 
 #### Operations
 
@@ -326,7 +323,7 @@ Create an instance: `const metadata = client.Metadata()`
 #### Example: Load
 
 ```ts
-const metadata = await client.Metadata().load({ id: 'metadata_id' })
+const metadata = await client.metadata.load({ id: 'metadata_id' })
 ```
 
 
@@ -387,7 +384,7 @@ wahlumfragen-datenbank/
 Import the SDK from the package root:
 
 ```ts
-import { WahlumfragenDatenbankSDK } from 'wahlumfragen-datenbank'
+import { WahlumfragenDatenbankSDK } from '@voxgig-sdk/wahlumfragen-datenbank'
 ```
 
 ### Entity state
@@ -397,11 +394,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const getpollingdatabase = client.getpollingdatabase
+await getpollingdatabase.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// getpollingdatabase.data() now returns the loaded getpollingdatabase data
+// getpollingdatabase.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

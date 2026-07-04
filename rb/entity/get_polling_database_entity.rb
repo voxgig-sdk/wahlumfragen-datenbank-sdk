@@ -45,6 +45,7 @@ class GetPollingDatabaseEntity
     end
   end
 
+  # @return [GetPollingDatabase, Hash] the current GetPollingDatabase data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class GetPollingDatabaseEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of GetPollingDatabase fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class GetPollingDatabaseEntity
   
 
   
+  # List GetPollingDatabase items matching the given filter.
+  #
+  # @param reqmatch [GetPollingDatabaseListMatch, Hash, nil] match filter (any subset of GetPollingDatabase fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<GetPollingDatabase>, Array] the matching GetPollingDatabase items; raises WahlumfragenDatenbankError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

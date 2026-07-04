@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch MetadataLoadMatch
+---@param ctrl? table
+---@return Metadata
+---@return string? err
 function MetadataEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

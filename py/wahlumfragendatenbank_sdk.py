@@ -144,16 +144,23 @@ class WahlumfragenDatenbankSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class WahlumfragenDatenbankSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,20 +212,42 @@ class WahlumfragenDatenbankSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def get_polling_database(self):
+        """Idiomatic facade: client.get_polling_database.list() / client.get_polling_database.load({"id": ...})."""
+        from entity.get_polling_database_entity import GetPollingDatabaseEntity
+        cached = getattr(self, "_get_polling_database", None)
+        if cached is None:
+            cached = GetPollingDatabaseEntity(self, None)
+            self._get_polling_database = cached
+        return cached
 
     def GetPollingDatabase(self, data=None):
+        # Deprecated: use client.get_polling_database instead.
         from entity.get_polling_database_entity import GetPollingDatabaseEntity
         return GetPollingDatabaseEntity(self, data)
 
 
+    @property
+    def metadata(self):
+        """Idiomatic facade: client.metadata.list() / client.metadata.load({"id": ...})."""
+        from entity.metadata_entity import MetadataEntity
+        cached = getattr(self, "_metadata", None)
+        if cached is None:
+            cached = MetadataEntity(self, None)
+            self._metadata = cached
+        return cached
+
     def Metadata(self, data=None):
+        # Deprecated: use client.metadata instead.
         from entity.metadata_entity import MetadataEntity
         return MetadataEntity(self, data)
 

@@ -9,9 +9,10 @@ The PHP SDK for the WahlumfragenDatenbank API — an entity-oriented client usin
 
 
 ## Install
-```bash
-composer require voxgig-sdk/wahlumfragen-datenbank
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,22 +26,22 @@ loading a specific record.
 <?php
 require_once 'wahlumfragendatenbank_sdk.php';
 
-$client = new WahlumfragenDatenbankSDK([
-    "apikey" => getenv("WAHLUMFRAGEN-DATENBANK_APIKEY"),
-]);
+$client = new WahlumfragenDatenbankSDK();
 ```
 
 ### 2. List getpollingdatabases
 
 ```php
-[$result, $err] = $client->GetPollingDatabase()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->getpollingdatabase()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
@@ -52,28 +53,31 @@ if (is_array($result)) {
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -87,7 +91,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = WahlumfragenDatenbankSDK::test();
 
-[$result, $err] = $client->WahlumfragenDatenbank()->load(["id" => "test01"]);
+$result = $client->getpollingdatabase()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -121,8 +125,7 @@ $client = new WahlumfragenDatenbankSDK([
 Create a `.env.local` file at the project root:
 
 ```
-WAHLUMFRAGEN-DATENBANK_TEST_LIVE=TRUE
-WAHLUMFRAGEN-DATENBANK_APIKEY=<your-key>
+WAHLUMFRAGEN_DATENBANK_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -145,7 +148,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -192,8 +194,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -239,7 +245,7 @@ API path: `/last_update.txt`
 
 ### GetPollingDatabase
 
-Create an instance: `const get_polling_database = client.GetPollingDatabase()`
+Create an instance: `const get_polling_database = client.get_polling_database`
 
 #### Operations
 
@@ -263,13 +269,13 @@ Create an instance: `const get_polling_database = client.GetPollingDatabase()`
 #### Example: List
 
 ```ts
-const get_polling_databases = await client.GetPollingDatabase().list()
+const get_polling_databases = await client.get_polling_database.list()
 ```
 
 
 ### Metadata
 
-Create an instance: `const metadata = client.Metadata()`
+Create an instance: `const metadata = client.metadata`
 
 #### Operations
 
@@ -280,7 +286,7 @@ Create an instance: `const metadata = client.Metadata()`
 #### Example: Load
 
 ```ts
-const metadata = await client.Metadata().load({ id: 'metadata_id' })
+const metadata = await client.metadata.load({ id: 'metadata_id' })
 ```
 
 
@@ -355,11 +361,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$getpollingdatabase = $client->getpollingdatabase();
+$getpollingdatabase->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $getpollingdatabase->dataGet() now returns the loaded getpollingdatabase data
+// $getpollingdatabase->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

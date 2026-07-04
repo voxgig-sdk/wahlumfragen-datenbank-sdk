@@ -43,8 +43,7 @@ class GetPollingDatabaseEntityTest < Minitest::Test
     get_polling_database_ref01_ent = client.GetPollingDatabase(nil)
     get_polling_database_ref01_match = {}
 
-    get_polling_database_ref01_list_result, err = get_polling_database_ref01_ent.list(get_polling_database_ref01_match, nil)
-    assert_nil err
+    get_polling_database_ref01_list_result = get_polling_database_ref01_ent.list(get_polling_database_ref01_match, nil)
     assert get_polling_database_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def get_polling_database_basic_setup(extra)
     "WAHLUMFRAGENDATENBANK_TEST_GET_POLLING_DATABASE_ENTID" => idmap,
     "WAHLUMFRAGENDATENBANK_TEST_LIVE" => "FALSE",
     "WAHLUMFRAGENDATENBANK_TEST_EXPLAIN" => "FALSE",
-    "WAHLUMFRAGENDATENBANK_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def get_polling_database_basic_setup(extra)
   if env["WAHLUMFRAGENDATENBANK_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["WAHLUMFRAGENDATENBANK_APIKEY"],
       },
       extra || {},
     ])

@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:get_polling_database():list() / client:get_polling_database():load({ id = ... })
+function WahlumfragenDatenbankSDK:get_polling_database(data)
+  local EntityMod = require("entity.get_polling_database_entity")
+  if data == nil then
+    if self._get_polling_database == nil then
+      self._get_polling_database = EntityMod.new(self, nil)
+    end
+    return self._get_polling_database
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:get_polling_database() instead.
 function WahlumfragenDatenbankSDK:GetPollingDatabase(data)
   local EntityMod = require("entity.get_polling_database_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:metadata():list() / client:metadata():load({ id = ... })
+function WahlumfragenDatenbankSDK:metadata(data)
+  local EntityMod = require("entity.metadata_entity")
+  if data == nil then
+    if self._metadata == nil then
+      self._metadata = EntityMod.new(self, nil)
+    end
+    return self._metadata
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:metadata() instead.
 function WahlumfragenDatenbankSDK:Metadata(data)
   local EntityMod = require("entity.metadata_entity")
   return EntityMod.new(self, data)

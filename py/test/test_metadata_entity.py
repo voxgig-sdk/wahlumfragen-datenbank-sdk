@@ -49,8 +49,7 @@ class TestMetadataEntity:
         # LOAD
         metadata_ref01_ent = client.Metadata(None)
         metadata_ref01_match_dt0 = {}
-        metadata_ref01_data_dt0_loaded, err = metadata_ref01_ent.load(metadata_ref01_match_dt0, None)
-        assert err is None
+        metadata_ref01_data_dt0_loaded = metadata_ref01_ent.load(metadata_ref01_match_dt0, None)
         assert metadata_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _metadata_basic_setup(extra):
         "WAHLUMFRAGENDATENBANK_TEST_METADATA_ENTID": idmap,
         "WAHLUMFRAGENDATENBANK_TEST_LIVE": "FALSE",
         "WAHLUMFRAGENDATENBANK_TEST_EXPLAIN": "FALSE",
-        "WAHLUMFRAGENDATENBANK_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _metadata_basic_setup(extra):
     if env.get("WAHLUMFRAGENDATENBANK_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("WAHLUMFRAGENDATENBANK_APIKEY"),
             },
             extra or {},
         ])

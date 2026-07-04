@@ -99,14 +99,12 @@ func metadataDirectSetup(mockres any) *metadataDirectSetupResult {
 	env := envOverride(map[string]any{
 		"WAHLUMFRAGENDATENBANK_TEST_METADATA_ENTID": map[string]any{},
 		"WAHLUMFRAGENDATENBANK_TEST_LIVE":    "FALSE",
-		"WAHLUMFRAGENDATENBANK_APIKEY":       "NONE",
 	})
 
 	live := env["WAHLUMFRAGENDATENBANK_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["WAHLUMFRAGENDATENBANK_APIKEY"],
 		}
 		client := sdk.NewWahlumfragenDatenbankSDK(mergedOpts)
 

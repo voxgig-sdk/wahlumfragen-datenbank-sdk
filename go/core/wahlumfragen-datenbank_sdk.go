@@ -245,11 +245,17 @@ func (sdk *WahlumfragenDatenbankSDK) Direct(fetchargs map[string]any) (map[strin
 }
 
 
+// GetPollingDatabase returns a GetPollingDatabase entity bound to this client.
+// Idiomatic usage: client.GetPollingDatabase(nil).List(nil, nil) or
+// client.GetPollingDatabase(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *WahlumfragenDatenbankSDK) GetPollingDatabase(data map[string]any) WahlumfragenDatenbankEntity {
 	return NewGetPollingDatabaseEntityFunc(sdk, data)
 }
 
 
+// Metadata returns a Metadata entity bound to this client.
+// Idiomatic usage: client.Metadata(nil).List(nil, nil) or
+// client.Metadata(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *WahlumfragenDatenbankSDK) Metadata(data map[string]any) WahlumfragenDatenbankEntity {
 	return NewMetadataEntityFunc(sdk, data)
 }

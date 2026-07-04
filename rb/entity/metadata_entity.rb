@@ -45,6 +45,7 @@ class MetadataEntity
     end
   end
 
+  # @return [Metadata, Hash] the current Metadata data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class MetadataEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Metadata fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Metadata.
+  #
+  # @param reqmatch [MetadataLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Metadata, Hash] the loaded Metadata; raises WahlumfragenDatenbankError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
