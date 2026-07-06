@@ -17,8 +17,6 @@ go build -o wahlumfragen-datenbank-cli ./...
 ```sh
 # One-shot: arguments form a single AQL expression
 ./wahlumfragen-datenbank-cli list get_polling_database
-./wahlumfragen-datenbank-cli load 1 get_polling_database
-./wahlumfragen-datenbank-cli load '{id:1}' get_polling_database
 
 # REPL
 ./wahlumfragen-datenbank-cli
@@ -30,7 +28,6 @@ go build -o wahlumfragen-datenbank-cli ./...
 |----------|----------------------------------------------|----------------------------|
 | `list`   | `[entity]` · `[query entity]`                | List records               |
 | `load`   | `[entity]` · `[query entity]`                | Load a single record       |
-| `update` | `[entity]` · `[query entity]`                | Update a record            |
 
 `query` is either a Map (`{id:1}`) or a Scalar (`1`, treated as `{id:1}`).
 `entity` is one of the SDK's entity names (auto-quoted as an atom).

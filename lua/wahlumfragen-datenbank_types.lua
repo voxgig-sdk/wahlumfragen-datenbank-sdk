@@ -17,6 +17,14 @@
 ---@field tasker_id string
 
 ---@class GetPollingDatabaseListMatch
+---@field date? string
+---@field institute_id? string
+---@field method_id? string
+---@field parliament_id? string
+---@field result? table
+---@field survey_period? table
+---@field surveyed_person? number
+---@field tasker_id? string
 
 ---@class Metadata
 

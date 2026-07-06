@@ -16,10 +16,20 @@ export interface GetPollingDatabase {
   tasker_id: string
 }
 
-export type GetPollingDatabaseListMatch = Partial<GetPollingDatabase>
+export interface GetPollingDatabaseListMatch {
+  date?: string
+  institute_id?: string
+  method_id?: string
+  parliament_id?: string
+  result?: Record<string, any>
+  survey_period?: Record<string, any>
+  surveyed_person?: number
+  tasker_id?: string
+}
 
 export interface Metadata {
 }
 
-export type MetadataLoadMatch = Partial<Metadata>
+export interface MetadataLoadMatch {
+}
 

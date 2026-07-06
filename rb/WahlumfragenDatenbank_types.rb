@@ -45,7 +45,7 @@ GetPollingDatabase = Struct.new(
   keyword_init: true
 )
 
-# Match filter for GetPollingDatabase#list (any subset of GetPollingDatabase fields).
+# Request payload for GetPollingDatabase#list.
 #
 # @!attribute [rw] date
 #   @return [String, nil]
@@ -86,7 +86,7 @@ GetPollingDatabaseListMatch = Struct.new(
 class Metadata
 end
 
-# Match filter for Metadata#load (any subset of Metadata fields).
+# Request payload for Metadata#load.
 class MetadataLoadMatch
 end
 

@@ -221,13 +221,13 @@ class WahlumfragenDatenbankSDK:
 
 
     def GetPollingDatabase(self, data=None) -> "GetPollingDatabaseEntity":
-        """Entity factory: client.GetPollingDatabase().list({}) / client.GetPollingDatabase().load({"id": ...})."""
+        """Entity factory: client.GetPollingDatabase().list() / client.GetPollingDatabase().load({"id": ...})."""
         from entity.get_polling_database_entity import GetPollingDatabaseEntity
         return GetPollingDatabaseEntity(self, data)
 
 
     def Metadata(self, data=None) -> "MetadataEntity":
-        """Entity factory: client.Metadata().list({}) / client.Metadata().load({"id": ...})."""
+        """Entity factory: client.Metadata().list() / client.Metadata().load({"id": ...})."""
         from entity.metadata_entity import MetadataEntity
         return MetadataEntity(self, data)
 

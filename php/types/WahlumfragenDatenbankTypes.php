@@ -25,7 +25,7 @@ class GetPollingDatabase
     public string $tasker_id;
 }
 
-/** Match filter for GetPollingDatabase#list (any subset of GetPollingDatabase fields). */
+/** Request payload for GetPollingDatabase#list. */
 class GetPollingDatabaseListMatch
 {
     public ?string $date = null;
@@ -43,7 +43,7 @@ class Metadata
 {
 }
 
-/** Match filter for Metadata#load (any subset of Metadata fields). */
+/** Request payload for Metadata#load. */
 class MetadataLoadMatch
 {
 }

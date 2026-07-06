@@ -128,14 +128,14 @@ const get_polling_database = client.GetPollingDatabase()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | Yes |  |
-| `institute_id` | ``$STRING`` | Yes |  |
-| `method_id` | ``$STRING`` | No |  |
-| `parliament_id` | ``$STRING`` | Yes |  |
-| `result` | ``$OBJECT`` | Yes |  |
-| `survey_period` | ``$OBJECT`` | No |  |
-| `surveyed_person` | ``$INTEGER`` | No |  |
-| `tasker_id` | ``$STRING`` | Yes |  |
+| `date` | `string` | Yes |  |
+| `institute_id` | `string` | Yes |  |
+| `method_id` | `string` | No |  |
+| `parliament_id` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes |  |
+| `survey_period` | `Record<string, any>` | No |  |
+| `surveyed_person` | `number` | No |  |
+| `tasker_id` | `string` | Yes |  |
 
 ### Operations
 
@@ -188,7 +188,7 @@ const metadata = client.Metadata()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Metadata().load({ id: 'metadata_id' })
+const result = await client.Metadata().load()
 ```
 
 ### Common Methods

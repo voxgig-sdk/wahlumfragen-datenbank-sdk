@@ -8,7 +8,7 @@ Complete API reference for the WahlumfragenDatenbank PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/wahlumfragen-datenbank_sdk.php';
+require_once __DIR__ . '/wahlumfragendatenbank_sdk.php';
 
 $client = new WahlumfragenDatenbankSDK($options);
 ```
@@ -49,11 +49,11 @@ Create a new `GetPollingDatabaseEntity` instance. Pass `null` for no initial dat
 
 Create a new `MetadataEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): WahlumfragenDatenbankUtility`
 
 Return a copy of the SDK utility object.
 
@@ -96,40 +96,40 @@ $get_polling_database = $client->GetPollingDatabase();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | Yes |  |
-| `institute_id` | ``$STRING`` | Yes |  |
-| `method_id` | ``$STRING`` | No |  |
-| `parliament_id` | ``$STRING`` | Yes |  |
-| `result` | ``$OBJECT`` | Yes |  |
-| `survey_period` | ``$OBJECT`` | No |  |
-| `surveyed_person` | ``$INTEGER`` | No |  |
-| `tasker_id` | ``$STRING`` | Yes |  |
+| `date` | `string` | Yes |  |
+| `institute_id` | `string` | Yes |  |
+| `method_id` | `string` | No |  |
+| `parliament_id` | `string` | Yes |  |
+| `result` | `array` | Yes |  |
+| `survey_period` | `array` | No |  |
+| `surveyed_person` | `int` | No |  |
+| `tasker_id` | `string` | Yes |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->GetPollingDatabase()->list([]);
+$results = $client->GetPollingDatabase()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -138,7 +138,7 @@ Set the entity match criteria.
 Create a new `GetPollingDatabaseEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -158,24 +158,24 @@ $metadata = $client->Metadata();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Metadata()->load(["id" => "metadata_id"]);
+$result = $client->Metadata()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -184,7 +184,7 @@ Set the entity match criteria.
 Create a new `MetadataEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

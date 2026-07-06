@@ -101,14 +101,14 @@ get_polling_database := client.GetPollingDatabase(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | Yes |  |
-| `institute_id` | ``$STRING`` | Yes |  |
-| `method_id` | ``$STRING`` | No |  |
-| `parliament_id` | ``$STRING`` | Yes |  |
-| `result` | ``$OBJECT`` | Yes |  |
-| `survey_period` | ``$OBJECT`` | No |  |
-| `surveyed_person` | ``$INTEGER`` | No |  |
-| `tasker_id` | ``$STRING`` | Yes |  |
+| `date` | `string` | Yes |  |
+| `institute_id` | `string` | Yes |  |
+| `method_id` | `string` | No |  |
+| `parliament_id` | `string` | Yes |  |
+| `result` | `map[string]any` | Yes |  |
+| `survey_period` | `map[string]any` | No |  |
+| `surveyed_person` | `int` | No |  |
+| `tasker_id` | `string` | Yes |  |
 
 ### Operations
 
@@ -157,7 +157,7 @@ metadata := client.Metadata(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Metadata(nil).Load(map[string]any{"id": "metadata_id"}, nil)
+result, err := client.Metadata(nil).Load(nil, nil)
 ```
 
 ### Common Methods

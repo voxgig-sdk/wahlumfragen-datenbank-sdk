@@ -94,14 +94,14 @@ local get_polling_database = client:GetPollingDatabase(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | Yes |  |
-| `institute_id` | ``$STRING`` | Yes |  |
-| `method_id` | ``$STRING`` | No |  |
-| `parliament_id` | ``$STRING`` | Yes |  |
-| `result` | ``$OBJECT`` | Yes |  |
-| `survey_period` | ``$OBJECT`` | No |  |
-| `surveyed_person` | ``$INTEGER`` | No |  |
-| `tasker_id` | ``$STRING`` | Yes |  |
+| `date` | `string` | Yes |  |
+| `institute_id` | `string` | Yes |  |
+| `method_id` | `string` | No |  |
+| `parliament_id` | `string` | Yes |  |
+| `result` | `table` | Yes |  |
+| `survey_period` | `table` | No |  |
+| `surveyed_person` | `number` | No |  |
+| `tasker_id` | `string` | Yes |  |
 
 ### Operations
 
@@ -156,7 +156,7 @@ local metadata = client:Metadata(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Metadata():load({ id = "metadata_id" })
+local result, err = client:Metadata():load()
 ```
 
 ### Common Methods

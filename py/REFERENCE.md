@@ -8,7 +8,7 @@ Complete API reference for the WahlumfragenDatenbank Python SDK.
 ### Constructor
 
 ```python
-from wahlumfragen-datenbank_sdk import WahlumfragenDatenbankSDK
+from wahlumfragendatenbank_sdk import WahlumfragenDatenbankSDK
 
 client = WahlumfragenDatenbankSDK(options)
 ```
@@ -91,23 +91,23 @@ get_polling_database = client.GetPollingDatabase()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | Yes |  |
-| `institute_id` | ``$STRING`` | Yes |  |
-| `method_id` | ``$STRING`` | No |  |
-| `parliament_id` | ``$STRING`` | Yes |  |
-| `result` | ``$OBJECT`` | Yes |  |
-| `survey_period` | ``$OBJECT`` | No |  |
-| `surveyed_person` | ``$INTEGER`` | No |  |
-| `tasker_id` | ``$STRING`` | Yes |  |
+| `date` | `str` | Yes |  |
+| `institute_id` | `str` | Yes |  |
+| `method_id` | `str` | No |  |
+| `parliament_id` | `str` | Yes |  |
+| `result` | `dict` | Yes |  |
+| `survey_period` | `dict` | No |  |
+| `surveyed_person` | `int` | No |  |
+| `tasker_id` | `str` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.GetPollingDatabase().list({})
+results = client.GetPollingDatabase().list()
 for get_polling_database in results:
     print(get_polling_database)
 ```
@@ -154,7 +154,7 @@ metadata = client.Metadata()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Metadata().load({"id": "metadata_id"})
+result = client.Metadata().load()
 ```
 
 ### Common Methods

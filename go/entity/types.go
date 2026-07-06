@@ -20,8 +20,7 @@ type GetPollingDatabase struct {
 	TaskerId string `json:"tasker_id"`
 }
 
-// GetPollingDatabaseListMatch mirrors the get_polling_database fields as an all-optional match
-// filter (Go analog of Partial<GetPollingDatabase>).
+// GetPollingDatabaseListMatch is the typed request payload for GetPollingDatabase.ListTyped.
 type GetPollingDatabaseListMatch struct {
 	Date *string `json:"date,omitempty"`
 	InstituteId *string `json:"institute_id,omitempty"`
@@ -37,8 +36,7 @@ type GetPollingDatabaseListMatch struct {
 type Metadata struct {
 }
 
-// MetadataLoadMatch mirrors the metadata fields as an all-optional match
-// filter (Go analog of Partial<Metadata>).
+// MetadataLoadMatch is the typed request payload for Metadata.LoadTyped.
 type MetadataLoadMatch struct {
 }
 
