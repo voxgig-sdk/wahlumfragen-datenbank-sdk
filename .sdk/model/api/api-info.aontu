@@ -19,9 +19,9 @@ main: {
           url: "https://api.dawum.de"
         }
       ]
+      summary: "Die API von DAWUM stellt eine umfassende Datenbank für Wahlumfragen als JSON-Datei zur Verfügung."
       title: "Wahlumfragen Datenbank API"
       version: "1.0.0"
+      website: "https://dawum.de/API/"
     }
   }
-}
-

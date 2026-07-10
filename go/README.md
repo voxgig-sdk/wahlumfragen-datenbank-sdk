@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // List getpollingdatabase records — the value is the array of records itself.
-    getpollingdatabases, err := client.GetPollingDatabase(nil).List(nil, nil)
+    // List getPollingDatabase records — the value is the array of records itself.
+    getPollingDatabases, err := client.GetPollingDatabase(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-    for _, item := range getpollingdatabases.([]any) {
+    for _, item := range getPollingDatabases.([]any) {
         fmt.Println(item)
     }
 }
@@ -137,13 +137,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-getpollingdatabase, err := client.GetPollingDatabase(nil).List(
+getPollingDatabase, err := client.GetPollingDatabase(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(getpollingdatabase) // the returned mock data
+fmt.Println(getPollingDatabase) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -250,9 +250,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    getpollingdatabase, err := client.GetPollingDatabase(nil).List(map[string]any{/* fields */}, nil)
+    getPollingDatabase, err := client.GetPollingDatabase(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // getpollingdatabase is the returned record
+    // getPollingDatabase is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -292,7 +292,7 @@ API path: `/last_update.txt`
 
 ### GetPollingDatabase
 
-Create an instance: `get_polling_database := client.GetPollingDatabase(nil)`
+Create an instance: `getPollingDatabase := client.GetPollingDatabase(nil)`
 
 #### Operations
 
@@ -316,11 +316,11 @@ Create an instance: `get_polling_database := client.GetPollingDatabase(nil)`
 #### Example: List
 
 ```go
-get_polling_databases, err := client.GetPollingDatabase(nil).List(nil, nil)
+getPollingDatabases, err := client.GetPollingDatabase(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(get_polling_databases) // the array of records
+fmt.Println(getPollingDatabases) // the array of records
 ```
 
 

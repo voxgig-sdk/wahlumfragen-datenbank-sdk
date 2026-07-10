@@ -94,7 +94,8 @@ same parameters as `Direct()`.
 ## GetPollingDatabaseEntity
 
 ```go
-get_polling_database := client.GetPollingDatabase(nil)
+getPollingDatabase := client.GetPollingDatabase(nil)
+fmt.Println(getPollingDatabase.GetName()) // "get_polling_database"
 ```
 
 ### Fields
@@ -118,6 +119,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.GetPollingDatabase(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -148,6 +153,7 @@ Return the entity name.
 
 ```go
 metadata := client.Metadata(nil)
+fmt.Println(metadata.GetName()) // "metadata"
 ```
 
 ### Operations
@@ -158,6 +164,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Metadata(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

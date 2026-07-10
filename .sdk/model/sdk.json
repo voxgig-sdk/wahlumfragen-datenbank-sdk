@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -297,14 +294,17 @@
           "name": "ODC Open Database License (ODC-ODbL)",
           "url": "https://opendatacommons.org/licenses/odbl/"
         },
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://api.dawum.de"
           }
         ],
+        "summary": "Die API von DAWUM stellt eine umfassende Datenbank für Wahlumfragen als JSON-Datei zur Verfügung.",
         "title": "Wahlumfragen Datenbank API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://dawum.de/API/"
       },
       "option": {},
       "target": {
@@ -357,6 +357,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -407,6 +410,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
