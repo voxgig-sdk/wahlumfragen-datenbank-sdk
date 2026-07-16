@@ -27,7 +27,20 @@ func main() {
 }
 
 func run(args []string, in io.Reader, out, errOut io.Writer) int {
-	client := sdk.NewWahlumfragenDatenbankSDK(nil)
+	// Configure from the environment: WAHLUMFRAGEN_DATENBANK_APIKEY carries the API key and
+	// WAHLUMFRAGEN_DATENBANK_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("WAHLUMFRAGEN_DATENBANK_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("WAHLUMFRAGEN_DATENBANK_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewWahlumfragenDatenbankSDK(opts)
 
 	r, err := eng.NewRegistry()
 	if err != nil {
