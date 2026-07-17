@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- WahlumfragenDatenbank SDK exists test
 
 local sdk = require("wahlumfragen-datenbank_sdk")
 
