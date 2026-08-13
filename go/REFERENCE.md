@@ -102,14 +102,14 @@ fmt.Println(getPollingDatabase.GetName()) // "get_polling_database"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `string` | Yes |  |
-| `institute_id` | `string` | Yes |  |
-| `method_id` | `string` | No |  |
-| `parliament_id` | `string` | Yes |  |
-| `result` | `map[string]any` | Yes |  |
-| `survey_period` | `map[string]any` | No |  |
-| `surveyed_person` | `int` | No |  |
-| `tasker_id` | `string` | Yes |  |
+| `Date` | `string` | Yes |  |
+| `Institute_ID` | `string` | Yes |  |
+| `Method_ID` | `string` | No |  |
+| `Parliament_ID` | `string` | Yes |  |
+| `Results` | `map[string]any` | Yes |  |
+| `Survey_Period` | `map[string]any` | No |  |
+| `Surveyed_Persons` | `int` | No |  |
+| `Tasker_ID` | `string` | Yes |  |
 
 ### Operations
 

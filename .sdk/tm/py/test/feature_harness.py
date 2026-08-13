@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import WahlumfragenDatenbankControl
-from core.error import WahlumfragenDatenbankError
-from core.result import WahlumfragenDatenbankResult
-from core.spec import WahlumfragenDatenbankSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import WahlumfragenDatenbankControl
+from projectname_sdk.core.error import WahlumfragenDatenbankError
+from projectname_sdk.core.result import WahlumfragenDatenbankResult
+from projectname_sdk.core.spec import WahlumfragenDatenbankSpec
 
 
 # True when this SDK was generated with the named feature.

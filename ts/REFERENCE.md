@@ -128,14 +128,14 @@ const get_polling_database = client.GetPollingDatabase()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `string` | Yes |  |
-| `institute_id` | `string` | Yes |  |
-| `method_id` | `string` | No |  |
-| `parliament_id` | `string` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `survey_period` | `Record<string, any>` | No |  |
-| `surveyed_person` | `number` | No |  |
-| `tasker_id` | `string` | Yes |  |
+| `Date` | `string` | Yes |  |
+| `Institute_ID` | `string` | Yes |  |
+| `Method_ID` | `string` | No |  |
+| `Parliament_ID` | `string` | Yes |  |
+| `Results` | `Record<string, any>` | Yes |  |
+| `Survey_Period` | `Record<string, any>` | No |  |
+| `Surveyed_Persons` | `number` | No |  |
+| `Tasker_ID` | `string` | Yes |  |
 
 ### Operations
 

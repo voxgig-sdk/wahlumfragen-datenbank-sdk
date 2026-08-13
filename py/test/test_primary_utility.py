@@ -6,15 +6,15 @@ import re
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from wahlumfragendatenbank_sdk.utility.voxgig_struct import voxgig_struct as vs
 from wahlumfragendatenbank_sdk import WahlumfragenDatenbankSDK
-from core.spec import WahlumfragenDatenbankSpec
-from core.result import WahlumfragenDatenbankResult
-from core.response import WahlumfragenDatenbankResponse
-from core.operation import WahlumfragenDatenbankOperation
-from core.error import WahlumfragenDatenbankError
-from core import helpers
-from feature.base_feature import WahlumfragenDatenbankBaseFeature
+from wahlumfragendatenbank_sdk.core.spec import WahlumfragenDatenbankSpec
+from wahlumfragendatenbank_sdk.core.result import WahlumfragenDatenbankResult
+from wahlumfragendatenbank_sdk.core.response import WahlumfragenDatenbankResponse
+from wahlumfragendatenbank_sdk.core.operation import WahlumfragenDatenbankOperation
+from wahlumfragendatenbank_sdk.core.error import WahlumfragenDatenbankError
+from wahlumfragendatenbank_sdk.core import helpers
+from wahlumfragendatenbank_sdk.feature.base_feature import WahlumfragenDatenbankBaseFeature
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -468,6 +468,10 @@ class TestPrimaryUtility:
             return {"status": 200, "statusText": "OK"}, None
 
         live_client = WahlumfragenDatenbankSDK({
+            # Concrete base: a live construction must satisfy any server
+            # variables a templated base URL declares; a literal base
+            # sidesteps the requirement.
+            "base": "http://localhost:8080",
             "system": {
                 "fetch": mock_fetch,
             },
@@ -490,6 +494,7 @@ class TestPrimaryUtility:
             return {}, None
 
         blocked_client = WahlumfragenDatenbankSDK({
+            "base": "http://localhost:8080",
             "system": {
                 "fetch": mock_fetch,
             },
@@ -945,28 +950,23 @@ class TestPrimaryUtility:
         _runset(_get_spec(primary, "prepareParams", "basic"), subject)
 
     def test_prepare_path_basic(self):
+        # Was two hand-written cases that had drifted out of the shared corpus
+        # (the preparePath fixture shipped as an empty `set: []`). Now driven
+        # by the corpus like every other section, so all ports assert the same
+        # separator / blank-segment behaviour.
+        spec = _load_test_spec()
+        primary = _get_spec(spec, "primary")
         client = WahlumfragenDatenbankSDK.test(None, None)
         utility = client._utility
-        ctx = _make_test_full_ctx(client, utility)
-        ctx.point = {
-            "parts": ["api", "planet", "{id}"],
-            "args": {"params": []},
-        }
 
-        path = utility.prepare_path(ctx)
-        assert path == "api/planet/{id}"
+        def subject(entry):
+            ctxmap = entry.get("ctx")
+            if not isinstance(ctxmap, dict):
+                ctxmap = {}
+            ctx = _make_ctx_from_map(ctxmap, client, utility)
+            return utility.prepare_path(ctx), None
 
-    def test_prepare_path_single(self):
-        client = WahlumfragenDatenbankSDK.test(None, None)
-        utility = client._utility
-        ctx = _make_test_full_ctx(client, utility)
-        ctx.point = {
-            "parts": ["items"],
-            "args": {"params": []},
-        }
-
-        path = utility.prepare_path(ctx)
-        assert path == "items"
+        _runset(_get_spec(primary, "preparePath", "basic"), subject)
 
     def test_prepare_query_basic(self):
         spec = _load_test_spec()

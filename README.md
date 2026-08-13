@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = WahlumfragenDatenbankSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = WahlumfragenDatenbankSDK.test({
+  entity: {
+    get_polling_database: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const getpollingdatabases = await client.GetPollingDatabase().list()
-// getpollingdatabases is an array of bare GetPollingDatabase records populated with mock data
+// getpollingdatabases is an array of GetPollingDatabase entities, populated with mock data
+// — call getpollingdatabases[0].data() for the record itself
 console.log(getpollingdatabases)
 ```
 
@@ -110,7 +119,7 @@ import { WahlumfragenDatenbankSDK } from '@voxgig-sdk/wahlumfragen-datenbank'
 
 const client = new WahlumfragenDatenbankSDK()
 
-// List all getpollingdatabases (returns GetPollingDatabase[])
+// List all getpollingdatabases (returns GetPollingDatabaseEntity[] — .data() for the record)
 const getpollingdatabases = await client.GetPollingDatabase().list()
 for (const getpollingdatabase of getpollingdatabases) {
   console.log(getpollingdatabase)
@@ -344,6 +353,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://dawum.de](https://dawum.de)
 

@@ -60,11 +60,11 @@ def get_polling_database_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "WAHLUMFRAGENDATENBANK_TEST_GET_POLLING_DATABASE_ENTID" => {},
-    "WAHLUMFRAGENDATENBANK_TEST_LIVE" => "FALSE",
+    "WAHLUMFRAGEN_DATENBANK_TEST_GET_POLLING_DATABASE_ENTID" => {},
+    "WAHLUMFRAGEN_DATENBANK_TEST_LIVE" => "FALSE",
   })
 
-  live = env["WAHLUMFRAGENDATENBANK_TEST_LIVE"] == "TRUE"
+  live = env["WAHLUMFRAGEN_DATENBANK_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

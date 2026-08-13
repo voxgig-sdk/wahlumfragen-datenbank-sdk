@@ -37,7 +37,7 @@ begin
   # list returns an Array of GetPollingDatabase records — iterate directly.
   getpollingdatabases = client.GetPollingDatabase.list
   getpollingdatabases.each do |item|
-    puts "#{item["date"]}"
+    puts "#{item["Date"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = WahlumfragenDatenbankSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 getpollingdatabase = client.GetPollingDatabase.list()
 puts getpollingdatabase
 ```
@@ -238,14 +239,14 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `institute_id` |  |
-| `method_id` |  |
-| `parliament_id` |  |
-| `result` |  |
-| `survey_period` |  |
-| `surveyed_person` |  |
-| `tasker_id` |  |
+| `Date` |  |
+| `Institute_ID` |  |
+| `Method_ID` |  |
+| `Parliament_ID` |  |
+| `Results` |  |
+| `Survey_Period` |  |
+| `Surveyed_Persons` |  |
+| `Tasker_ID` |  |
 
 Operations: List.
 
@@ -279,14 +280,14 @@ Create an instance: `get_polling_database = client.GetPollingDatabase`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `String` |  |
-| `institute_id` | `String` |  |
-| `method_id` | `String` |  |
-| `parliament_id` | `String` |  |
-| `result` | `Hash` |  |
-| `survey_period` | `Hash` |  |
-| `surveyed_person` | `Integer` |  |
-| `tasker_id` | `String` |  |
+| `Date` | `String` |  |
+| `Institute_ID` | `String` |  |
+| `Method_ID` | `String` |  |
+| `Parliament_ID` | `String` |  |
+| `Results` | `Hash` |  |
+| `Survey_Period` | `Hash` |  |
+| `Surveyed_Persons` | `Integer` |  |
+| `Tasker_ID` | `String` |  |
 
 #### Example: List
 
@@ -309,7 +310,7 @@ Create an instance: `metadata = client.Metadata`
 #### Example: Load
 
 ```ruby
-# load returns the bare Metadata record (raises on error).
+# load returns the ENTITY — call data_get for the Metadata record (raises on error).
 metadata = client.Metadata.load()
 ```
 

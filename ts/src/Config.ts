@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'WahlumfragenDatenbank',
   }
 
 
@@ -59,56 +59,56 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "date",
+          "name": "Date",
           "req": true,
           "type": "`$STRING`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "institute_id",
+          "name": "Institute_ID",
           "req": true,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "method_id",
+          "name": "Method_ID",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "parliament_id",
+          "name": "Parliament_ID",
           "req": true,
           "type": "`$STRING`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "result",
+          "name": "Results",
           "req": true,
           "type": "`$OBJECT`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "survey_period",
+          "name": "Survey_Period",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "surveyed_person",
+          "name": "Surveyed_Persons",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 6
         },
         {
           "active": true,
-          "name": "tasker_id",
+          "name": "Tasker_ID",
           "req": true,
           "type": "`$STRING`",
           "index$": 7
@@ -123,6 +123,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/",
               "parts": [],
@@ -152,6 +153,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/last_update.txt",
               "parts": [

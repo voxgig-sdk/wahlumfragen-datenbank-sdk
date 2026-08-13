@@ -10,75 +10,75 @@
 
 # GetPollingDatabase entity data model.
 #
-# @!attribute [rw] date
+# @!attribute [rw] Date
 #   @return [String]
 #
-# @!attribute [rw] institute_id
+# @!attribute [rw] Institute_ID
 #   @return [String]
 #
-# @!attribute [rw] method_id
+# @!attribute [rw] Method_ID
 #   @return [String, nil]
 #
-# @!attribute [rw] parliament_id
+# @!attribute [rw] Parliament_ID
 #   @return [String]
 #
-# @!attribute [rw] result
+# @!attribute [rw] Results
 #   @return [Hash]
 #
-# @!attribute [rw] survey_period
+# @!attribute [rw] Survey_Period
 #   @return [Hash, nil]
 #
-# @!attribute [rw] surveyed_person
+# @!attribute [rw] Surveyed_Persons
 #   @return [Integer, nil]
 #
-# @!attribute [rw] tasker_id
+# @!attribute [rw] Tasker_ID
 #   @return [String]
 GetPollingDatabase = Struct.new(
-  :date,
-  :institute_id,
-  :method_id,
-  :parliament_id,
-  :result,
-  :survey_period,
-  :surveyed_person,
-  :tasker_id,
+  :Date,
+  :Institute_ID,
+  :Method_ID,
+  :Parliament_ID,
+  :Results,
+  :Survey_Period,
+  :Surveyed_Persons,
+  :Tasker_ID,
   keyword_init: true
 )
 
 # Request payload for GetPollingDatabase#list.
 #
-# @!attribute [rw] date
+# @!attribute [rw] Date
 #   @return [String, nil]
 #
-# @!attribute [rw] institute_id
+# @!attribute [rw] Institute_ID
 #   @return [String, nil]
 #
-# @!attribute [rw] method_id
+# @!attribute [rw] Method_ID
 #   @return [String, nil]
 #
-# @!attribute [rw] parliament_id
+# @!attribute [rw] Parliament_ID
 #   @return [String, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] Results
 #   @return [Hash, nil]
 #
-# @!attribute [rw] survey_period
+# @!attribute [rw] Survey_Period
 #   @return [Hash, nil]
 #
-# @!attribute [rw] surveyed_person
+# @!attribute [rw] Surveyed_Persons
 #   @return [Integer, nil]
 #
-# @!attribute [rw] tasker_id
+# @!attribute [rw] Tasker_ID
 #   @return [String, nil]
 GetPollingDatabaseListMatch = Struct.new(
-  :date,
-  :institute_id,
-  :method_id,
-  :parliament_id,
-  :result,
-  :survey_period,
-  :surveyed_person,
-  :tasker_id,
+  :Date,
+  :Institute_ID,
+  :Method_ID,
+  :Parliament_ID,
+  :Results,
+  :Survey_Period,
+  :Surveyed_Persons,
+  :Tasker_ID,
   keyword_init: true
 )
 

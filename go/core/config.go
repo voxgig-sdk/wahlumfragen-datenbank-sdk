@@ -27,56 +27,56 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "date",
+						"name": "Date",
 						"req": true,
 						"type": "`$STRING`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "institute_id",
+						"name": "Institute_ID",
 						"req": true,
 						"type": "`$STRING`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "method_id",
+						"name": "Method_ID",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
 					},
 					map[string]any{
 						"active": true,
-						"name": "parliament_id",
+						"name": "Parliament_ID",
 						"req": true,
 						"type": "`$STRING`",
 						"index$": 3,
 					},
 					map[string]any{
 						"active": true,
-						"name": "result",
+						"name": "Results",
 						"req": true,
 						"type": "`$OBJECT`",
 						"index$": 4,
 					},
 					map[string]any{
 						"active": true,
-						"name": "survey_period",
+						"name": "Survey_Period",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 5,
 					},
 					map[string]any{
 						"active": true,
-						"name": "surveyed_person",
+						"name": "Surveyed_Persons",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 6,
 					},
 					map[string]any{
 						"active": true,
-						"name": "tasker_id",
+						"name": "Tasker_ID",
 						"req": true,
 						"type": "`$STRING`",
 						"index$": 7,
@@ -91,6 +91,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/",
 								"parts": []any{},
@@ -102,7 +103,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -120,6 +120,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/last_update.txt",
 								"parts": []any{
@@ -133,7 +134,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

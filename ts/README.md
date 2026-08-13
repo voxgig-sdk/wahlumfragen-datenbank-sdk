@@ -35,7 +35,9 @@ const client = new WahlumfragenDatenbankSDK()
 
 ### 2. List getpollingdatabase records
 
-`list()` resolves to an array of GetPollingDatabase objects — iterate it directly:
+`list()` resolves to an array of GetPollingDatabase ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const getpollingdatabases = await client.GetPollingDatabase().list()
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = WahlumfragenDatenbankSDK.test()
 
 const getpollingdatabase = await client.GetPollingDatabase().list()
-// getpollingdatabase is a bare entity populated with mock response data
+// getpollingdatabase is the entity, populated with mock response data
+// — call getpollingdatabase.data() for the record itself
 console.log(getpollingdatabase)
 ```
 
@@ -287,14 +290,14 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `institute_id` |  |
-| `method_id` |  |
-| `parliament_id` |  |
-| `result` |  |
-| `survey_period` |  |
-| `surveyed_person` |  |
-| `tasker_id` |  |
+| `Date` |  |
+| `Institute_ID` |  |
+| `Method_ID` |  |
+| `Parliament_ID` |  |
+| `Results` |  |
+| `Survey_Period` |  |
+| `Surveyed_Persons` |  |
+| `Tasker_ID` |  |
 
 Operations: list.
 
@@ -328,14 +331,14 @@ Create an instance: `const get_polling_database = client.GetPollingDatabase()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `institute_id` | `string` |  |
-| `method_id` | `string` |  |
-| `parliament_id` | `string` |  |
-| `result` | `Record<string, any>` |  |
-| `survey_period` | `Record<string, any>` |  |
-| `surveyed_person` | `number` |  |
-| `tasker_id` | `string` |  |
+| `Date` | `string` |  |
+| `Institute_ID` | `string` |  |
+| `Method_ID` | `string` |  |
+| `Parliament_ID` | `string` |  |
+| `Results` | `Record<string, any>` |  |
+| `Survey_Period` | `Record<string, any>` |  |
+| `Surveyed_Persons` | `number` |  |
+| `Tasker_ID` | `string` |  |
 
 #### Example: List
 

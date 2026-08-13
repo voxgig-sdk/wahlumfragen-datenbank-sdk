@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from wahlumfragendatenbank_sdk.utility.voxgig_struct import voxgig_struct as vs
 from wahlumfragendatenbank_sdk import WahlumfragenDatenbankSDK
-from core import helpers
+from wahlumfragendatenbank_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _get_polling_database_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "WAHLUMFRAGENDATENBANK_TEST_GET_POLLING_DATABASE_ENTID": {},
-        "WAHLUMFRAGENDATENBANK_TEST_LIVE": "FALSE",
+        "WAHLUMFRAGEN_DATENBANK_TEST_GET_POLLING_DATABASE_ENTID": {},
+        "WAHLUMFRAGEN_DATENBANK_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("WAHLUMFRAGENDATENBANK_TEST_LIVE") == "TRUE"
+    live = env.get("WAHLUMFRAGEN_DATENBANK_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

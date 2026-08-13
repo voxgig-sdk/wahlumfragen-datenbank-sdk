@@ -97,14 +97,14 @@ get_polling_database = client.GetPollingDatabase
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `String` | Yes |  |
-| `institute_id` | `String` | Yes |  |
-| `method_id` | `String` | No |  |
-| `parliament_id` | `String` | Yes |  |
-| `result` | `Hash` | Yes |  |
-| `survey_period` | `Hash` | No |  |
-| `surveyed_person` | `Integer` | No |  |
-| `tasker_id` | `String` | Yes |  |
+| `Date` | `String` | Yes |  |
+| `Institute_ID` | `String` | Yes |  |
+| `Method_ID` | `String` | No |  |
+| `Parliament_ID` | `String` | Yes |  |
+| `Results` | `Hash` | Yes |  |
+| `Survey_Period` | `Hash` | No |  |
+| `Surveyed_Persons` | `Integer` | No |  |
+| `Tasker_ID` | `String` | Yes |  |
 
 ### Operations
 

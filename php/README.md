@@ -38,7 +38,7 @@ try {
     // list() returns an array of GetPollingDatabase records — iterate directly.
     $getpollingdatabases = $client->GetPollingDatabase()->list();
     foreach ($getpollingdatabases as $item) {
-        echo $item["date"] . "\n";
+        echo $item["Date"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -125,7 +125,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = WahlumfragenDatenbankSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $getpollingdatabase = $client->GetPollingDatabase()->list();
 print_r($getpollingdatabase);
 ```
@@ -226,7 +227,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -248,14 +249,14 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `institute_id` |  |
-| `method_id` |  |
-| `parliament_id` |  |
-| `result` |  |
-| `survey_period` |  |
-| `surveyed_person` |  |
-| `tasker_id` |  |
+| `Date` |  |
+| `Institute_ID` |  |
+| `Method_ID` |  |
+| `Parliament_ID` |  |
+| `Results` |  |
+| `Survey_Period` |  |
+| `Surveyed_Persons` |  |
+| `Tasker_ID` |  |
 
 Operations: List.
 
@@ -289,14 +290,14 @@ Create an instance: `$get_polling_database = $client->GetPollingDatabase();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `institute_id` | `string` |  |
-| `method_id` | `string` |  |
-| `parliament_id` | `string` |  |
-| `result` | `array` |  |
-| `survey_period` | `array` |  |
-| `surveyed_person` | `int` |  |
-| `tasker_id` | `string` |  |
+| `Date` | `string` |  |
+| `Institute_ID` | `string` |  |
+| `Method_ID` | `string` |  |
+| `Parliament_ID` | `string` |  |
+| `Results` | `array` |  |
+| `Survey_Period` | `array` |  |
+| `Surveyed_Persons` | `int` |  |
+| `Tasker_ID` | `string` |  |
 
 #### Example: List
 
@@ -319,7 +320,7 @@ Create an instance: `$metadata = $client->Metadata();`
 #### Example: Load
 
 ```php
-// load() returns the bare Metadata record (throws on error).
+// load() returns the ENTITY — call data_get() for the Metadata record (throws on error).
 $metadata = $client->Metadata()->load();
 ```
 

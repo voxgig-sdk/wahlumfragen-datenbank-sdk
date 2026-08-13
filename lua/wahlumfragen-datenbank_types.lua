@@ -7,24 +7,24 @@
 -- edit by hand.
 
 ---@class GetPollingDatabase
----@field date string
----@field institute_id string
----@field method_id? string
----@field parliament_id string
----@field result table
----@field survey_period? table
----@field surveyed_person? number
----@field tasker_id string
+---@field Date string
+---@field Institute_ID string
+---@field Method_ID? string
+---@field Parliament_ID string
+---@field Results table
+---@field Survey_Period? table
+---@field Surveyed_Persons? number
+---@field Tasker_ID string
 
 ---@class GetPollingDatabaseListMatch
----@field date? string
----@field institute_id? string
----@field method_id? string
----@field parliament_id? string
----@field result? table
----@field survey_period? table
----@field surveyed_person? number
----@field tasker_id? string
+---@field Date? string
+---@field Institute_ID? string
+---@field Method_ID? string
+---@field Parliament_ID? string
+---@field Results? table
+---@field Survey_Period? table
+---@field Surveyed_Persons? number
+---@field Tasker_ID? string
 
 ---@class Metadata
 

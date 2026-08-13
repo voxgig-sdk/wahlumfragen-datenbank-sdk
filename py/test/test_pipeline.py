@@ -16,11 +16,11 @@
 import pytest
 
 from wahlumfragendatenbank_sdk import WahlumfragenDatenbankSDK
-from core.error import WahlumfragenDatenbankError
-from core.result import WahlumfragenDatenbankResult
-from core.response import WahlumfragenDatenbankResponse
-from core.spec import WahlumfragenDatenbankSpec
-from feature.base_feature import WahlumfragenDatenbankBaseFeature
+from wahlumfragendatenbank_sdk.core.error import WahlumfragenDatenbankError
+from wahlumfragendatenbank_sdk.core.result import WahlumfragenDatenbankResult
+from wahlumfragendatenbank_sdk.core.response import WahlumfragenDatenbankResponse
+from wahlumfragendatenbank_sdk.core.spec import WahlumfragenDatenbankSpec
+from wahlumfragendatenbank_sdk.feature.base_feature import WahlumfragenDatenbankBaseFeature
 
 
 def _client():

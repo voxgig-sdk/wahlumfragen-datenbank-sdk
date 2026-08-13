@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ WahlumfragenDatenbankUtility.registrar = ->(u) {
   u.prepare_params = WahlumfragenDatenbankUtilities::PrepareParams
   u.prepare_path = WahlumfragenDatenbankUtilities::PreparePath
   u.prepare_query = WahlumfragenDatenbankUtilities::PrepareQuery
+  u.graphql_body = WahlumfragenDatenbankUtilities::GraphqlBody
+  u.graphql_errors = WahlumfragenDatenbankUtilities::GraphqlErrors
   u.result_basic = WahlumfragenDatenbankUtilities::ResultBasic
   u.result_body = WahlumfragenDatenbankUtilities::ResultBody
   u.result_headers = WahlumfragenDatenbankUtilities::ResultHeaders

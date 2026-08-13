@@ -15,27 +15,27 @@ declare(strict_types=1);
 /** GetPollingDatabase entity data model. */
 class GetPollingDatabase
 {
-    public string $date;
-    public string $institute_id;
-    public ?string $method_id = null;
-    public string $parliament_id;
-    public array $result;
-    public ?array $survey_period = null;
-    public ?int $surveyed_person = null;
-    public string $tasker_id;
+    public string $Date;
+    public string $Institute_ID;
+    public ?string $Method_ID = null;
+    public string $Parliament_ID;
+    public array $Results;
+    public ?array $Survey_Period = null;
+    public ?int $Surveyed_Persons = null;
+    public string $Tasker_ID;
 }
 
 /** Request payload for GetPollingDatabase#list. */
 class GetPollingDatabaseListMatch
 {
-    public ?string $date = null;
-    public ?string $institute_id = null;
-    public ?string $method_id = null;
-    public ?string $parliament_id = null;
-    public ?array $result = null;
-    public ?array $survey_period = null;
-    public ?int $surveyed_person = null;
-    public ?string $tasker_id = null;
+    public ?string $Date = null;
+    public ?string $Institute_ID = null;
+    public ?string $Method_ID = null;
+    public ?string $Parliament_ID = null;
+    public ?array $Results = null;
+    public ?array $Survey_Period = null;
+    public ?int $Surveyed_Persons = null;
+    public ?string $Tasker_ID = null;
 }
 
 /** Metadata entity data model. */

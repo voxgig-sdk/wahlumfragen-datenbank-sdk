@@ -61,11 +61,11 @@ function get_polling_database_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["WAHLUMFRAGENDATENBANK_TEST_GET_POLLING_DATABASE_ENTID"] = {},
-    ["WAHLUMFRAGENDATENBANK_TEST_LIVE"] = "FALSE",
+    ["WAHLUMFRAGEN_DATENBANK_TEST_GET_POLLING_DATABASE_ENTID"] = {},
+    ["WAHLUMFRAGEN_DATENBANK_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["WAHLUMFRAGENDATENBANK_TEST_LIVE"] == "TRUE"
+  local live = env["WAHLUMFRAGEN_DATENBANK_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

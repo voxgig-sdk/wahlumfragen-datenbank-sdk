@@ -26,8 +26,8 @@ import {
 describe('GetPollingDatabaseEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when WAHLUMFRAGENDATENBANK_TEST_LIVE=TRUE.
-  afterEach(liveDelay('WAHLUMFRAGENDATENBANK_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when WAHLUMFRAGEN_DATENBANK_TEST_LIVE=TRUE.
+  afterEach(liveDelay('WAHLUMFRAGEN_DATENBANK_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = WahlumfragenDatenbankSDK.test()
@@ -63,7 +63,7 @@ describe('GetPollingDatabaseEntity', async () => {
     const get_polling_database_ref01_ent = client.GetPollingDatabase()
     const get_polling_database_ref01_match: any = {}
 
-    const get_polling_database_ref01_list = await get_polling_database_ref01_ent.list(get_polling_database_ref01_match)
+    const get_polling_database_ref01_list = (await get_polling_database_ref01_ent.list(get_polling_database_ref01_match)).map((e: any) => e.data())
 
 
   })

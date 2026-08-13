@@ -94,14 +94,14 @@ local get_polling_database = client:GetPollingDatabase(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `string` | Yes |  |
-| `institute_id` | `string` | Yes |  |
-| `method_id` | `string` | No |  |
-| `parliament_id` | `string` | Yes |  |
-| `result` | `table` | Yes |  |
-| `survey_period` | `table` | No |  |
-| `surveyed_person` | `number` | No |  |
-| `tasker_id` | `string` | Yes |  |
+| `Date` | `string` | Yes |  |
+| `Institute_ID` | `string` | Yes |  |
+| `Method_ID` | `string` | No |  |
+| `Parliament_ID` | `string` | Yes |  |
+| `Results` | `table` | Yes |  |
+| `Survey_Period` | `table` | No |  |
+| `Surveyed_Persons` | `number` | No |  |
+| `Tasker_ID` | `string` | Yes |  |
 
 ### Operations
 

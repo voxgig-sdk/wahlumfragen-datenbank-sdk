@@ -2,48 +2,48 @@
   "existing": {
     "get_polling_database": {
       "GET_POLLING_DATABASE00": {
-        "date": "s50",
-        "institute_id": "INSTITUTE01",
-        "method_id": "METHOD01",
-        "parliament_id": "PARLIAMENT01",
-        "result": {},
-        "survey_period": {},
-        "surveyed_person": "s56",
-        "tasker_id": "TASKER01"
+        "Date": "s50",
+        "Institute_ID": "s51",
+        "Method_ID": "s52",
+        "Parliament_ID": "s53",
+        "Results": {},
+        "Survey_Period": {},
+        "Surveyed_Persons": "s56",
+        "Tasker_ID": "s57"
       },
       "GET_POLLING_DATABASE01": {
-        "date": "sa0",
-        "institute_id": "INSTITUTE01",
-        "method_id": "METHOD01",
-        "parliament_id": "PARLIAMENT01",
-        "result": {},
-        "survey_period": {},
-        "surveyed_person": "sa6",
-        "tasker_id": "TASKER01"
+        "Date": "sa0",
+        "Institute_ID": "sa1",
+        "Method_ID": "sa2",
+        "Parliament_ID": "sa3",
+        "Results": {},
+        "Survey_Period": {},
+        "Surveyed_Persons": "sa6",
+        "Tasker_ID": "sa7"
       },
       "GET_POLLING_DATABASE02": {
-        "date": "sf0",
-        "institute_id": "INSTITUTE01",
-        "method_id": "METHOD01",
-        "parliament_id": "PARLIAMENT01",
-        "result": {},
-        "survey_period": {},
-        "surveyed_person": "sf6",
-        "tasker_id": "TASKER01"
+        "Date": "sf0",
+        "Institute_ID": "sf1",
+        "Method_ID": "sf2",
+        "Parliament_ID": "sf3",
+        "Results": {},
+        "Survey_Period": {},
+        "Surveyed_Persons": "sf6",
+        "Tasker_ID": "sf7"
       }
     }
   },
   "new": {
     "get_polling_database": {
       "get_polling_database_ref01": {
-        "date": "s140",
-        "institute_id": "INSTITUTE01",
-        "method_id": "METHOD01",
-        "parliament_id": "PARLIAMENT01",
-        "result": {},
-        "survey_period": {},
-        "surveyed_person": "s146",
-        "tasker_id": "TASKER01"
+        "Date": "s140",
+        "Institute_ID": "s141",
+        "Method_ID": "s142",
+        "Parliament_ID": "s143",
+        "Results": {},
+        "Survey_Period": {},
+        "Surveyed_Persons": "s146",
+        "Tasker_ID": "s147"
       }
     }
   }

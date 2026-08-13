@@ -26,8 +26,8 @@ import {
 describe('MetadataEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when WAHLUMFRAGENDATENBANK_TEST_LIVE=TRUE.
-  afterEach(liveDelay('WAHLUMFRAGENDATENBANK_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when WAHLUMFRAGEN_DATENBANK_TEST_LIVE=TRUE.
+  afterEach(liveDelay('WAHLUMFRAGEN_DATENBANK_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = WahlumfragenDatenbankSDK.test()
@@ -62,7 +62,7 @@ describe('MetadataEntity', async () => {
     // LOAD
     const metadata_ref01_ent = client.Metadata()
     const metadata_ref01_match_dt0: any = {}
-    const metadata_ref01_data_dt0 = await metadata_ref01_ent.load(metadata_ref01_match_dt0)
+    const metadata_ref01_data_dt0 = (await metadata_ref01_ent.load(metadata_ref01_match_dt0)).data()
     assert(null != metadata_ref01_data_dt0)
 
 

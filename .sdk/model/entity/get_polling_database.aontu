@@ -6,42 +6,42 @@ main: kit: entity: get_polling_database: {
 
   fields: [
     {
-      name: "date"
+      name: "Date"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "institute_id"
+      name: "Institute_ID"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "method_id"
+      name: "Method_ID"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "parliament_id"
+      name: "Parliament_ID"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "result"
+      name: "Results"
       req: true
       type: "`$OBJECT`"
     }
     {
-      name: "survey_period"
+      name: "Survey_Period"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "surveyed_person"
+      name: "Surveyed_Persons"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "tasker_id"
+      name: "Tasker_ID"
       req: true
       type: "`$STRING`"
     }

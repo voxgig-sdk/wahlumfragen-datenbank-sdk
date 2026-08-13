@@ -263,14 +263,14 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"date"` |  |
-| `"institute_id"` |  |
-| `"method_id"` |  |
-| `"parliament_id"` |  |
-| `"result"` |  |
-| `"survey_period"` |  |
-| `"surveyed_person"` |  |
-| `"tasker_id"` |  |
+| `"Date"` |  |
+| `"Institute_ID"` |  |
+| `"Method_ID"` |  |
+| `"Parliament_ID"` |  |
+| `"Results"` |  |
+| `"Survey_Period"` |  |
+| `"Surveyed_Persons"` |  |
+| `"Tasker_ID"` |  |
 
 Operations: List.
 
@@ -304,14 +304,14 @@ Create an instance: `getPollingDatabase := client.GetPollingDatabase(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `institute_id` | `string` |  |
-| `method_id` | `string` |  |
-| `parliament_id` | `string` |  |
-| `result` | `map[string]any` |  |
-| `survey_period` | `map[string]any` |  |
-| `surveyed_person` | `int` |  |
-| `tasker_id` | `string` |  |
+| `Date` | `string` |  |
+| `Institute_ID` | `string` |  |
+| `Method_ID` | `string` |  |
+| `Parliament_ID` | `string` |  |
+| `Results` | `map[string]any` |  |
+| `Survey_Period` | `map[string]any` |  |
+| `Surveyed_Persons` | `int` |  |
+| `Tasker_ID` | `string` |  |
 
 #### Example: List
 

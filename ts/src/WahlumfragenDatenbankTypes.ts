@@ -6,25 +6,25 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface GetPollingDatabase {
-  date: string
-  institute_id: string
-  method_id?: string
-  parliament_id: string
-  result: Record<string, any>
-  survey_period?: Record<string, any>
-  surveyed_person?: number
-  tasker_id: string
+  Date: string
+  Institute_ID: string
+  Method_ID?: string
+  Parliament_ID: string
+  Results: Record<string, any>
+  Survey_Period?: Record<string, any>
+  Surveyed_Persons?: number
+  Tasker_ID: string
 }
 
 export interface GetPollingDatabaseListMatch {
-  date?: string
-  institute_id?: string
-  method_id?: string
-  parliament_id?: string
-  result?: Record<string, any>
-  survey_period?: Record<string, any>
-  surveyed_person?: number
-  tasker_id?: string
+  Date?: string
+  Institute_ID?: string
+  Method_ID?: string
+  Parliament_ID?: string
+  Results?: Record<string, any>
+  Survey_Period?: Record<string, any>
+  Surveyed_Persons?: number
+  Tasker_ID?: string
 }
 
 export interface Metadata {

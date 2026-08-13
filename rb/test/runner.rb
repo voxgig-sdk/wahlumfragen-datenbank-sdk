@@ -23,8 +23,8 @@ module WahlumfragenDatenbankTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("WAHLUMFRAGENDATENBANK_TEST_LIVE")
-    override = getenv("WAHLUMFRAGENDATENBANK_TEST_OVERRIDE")
+    live = getenv("WAHLUMFRAGEN_DATENBANK_TEST_LIVE")
+    override = getenv("WAHLUMFRAGEN_DATENBANK_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module WahlumfragenDatenbankTestRunner
       end
     end
 
-    explain = getenv("WAHLUMFRAGENDATENBANK_TEST_EXPLAIN")
-    m["WAHLUMFRAGENDATENBANK_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("WAHLUMFRAGEN_DATENBANK_TEST_EXPLAIN")
+    m["WAHLUMFRAGEN_DATENBANK_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

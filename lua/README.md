@@ -43,7 +43,7 @@ local getpollingdatabases, err = client:GetPollingDatabase():list()
 if err then error(err) end
 
 for _, item in ipairs(getpollingdatabases) do
-  print(item["date"])
+  print(item["Date"])
 end
 ```
 
@@ -221,9 +221,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local get_polling_database, err = client:GetPollingDatabase():load()
+    local metadata, err = client:Metadata():load()
     if err then error(err) end
-    -- get_polling_database is the loaded record
+    -- metadata is the loaded record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -234,14 +234,14 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `institute_id` |  |
-| `method_id` |  |
-| `parliament_id` |  |
-| `result` |  |
-| `survey_period` |  |
-| `surveyed_person` |  |
-| `tasker_id` |  |
+| `Date` |  |
+| `Institute_ID` |  |
+| `Method_ID` |  |
+| `Parliament_ID` |  |
+| `Results` |  |
+| `Survey_Period` |  |
+| `Surveyed_Persons` |  |
+| `Tasker_ID` |  |
 
 Operations: List.
 
@@ -275,14 +275,14 @@ Create an instance: `local get_polling_database = client:GetPollingDatabase(nil)
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `institute_id` | `string` |  |
-| `method_id` | `string` |  |
-| `parliament_id` | `string` |  |
-| `result` | `table` |  |
-| `survey_period` | `table` |  |
-| `surveyed_person` | `number` |  |
-| `tasker_id` | `string` |  |
+| `Date` | `string` |  |
+| `Institute_ID` | `string` |  |
+| `Method_ID` | `string` |  |
+| `Parliament_ID` | `string` |  |
+| `Results` | `table` |  |
+| `Survey_Period` | `table` |  |
+| `Surveyed_Persons` | `number` |  |
+| `Tasker_ID` | `string` |  |
 
 #### Example: List
 

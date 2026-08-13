@@ -96,14 +96,14 @@ $get_polling_database = $client->GetPollingDatabase();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `string` | Yes |  |
-| `institute_id` | `string` | Yes |  |
-| `method_id` | `string` | No |  |
-| `parliament_id` | `string` | Yes |  |
-| `result` | `array` | Yes |  |
-| `survey_period` | `array` | No |  |
-| `surveyed_person` | `int` | No |  |
-| `tasker_id` | `string` | Yes |  |
+| `Date` | `string` | Yes |  |
+| `Institute_ID` | `string` | Yes |  |
+| `Method_ID` | `string` | No |  |
+| `Parliament_ID` | `string` | Yes |  |
+| `Results` | `array` | Yes |  |
+| `Survey_Period` | `array` | No |  |
+| `Surveyed_Persons` | `int` | No |  |
+| `Tasker_ID` | `string` | Yes |  |
 
 ### Operations
 

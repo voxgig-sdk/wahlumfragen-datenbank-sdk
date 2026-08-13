@@ -124,7 +124,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = WahlumfragenDatenbankSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 getpollingdatabase = client.GetPollingDatabase().list()
 # getpollingdatabase contains the mock response record
 ```
@@ -222,7 +223,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -244,14 +245,14 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `institute_id` |  |
-| `method_id` |  |
-| `parliament_id` |  |
-| `result` |  |
-| `survey_period` |  |
-| `surveyed_person` |  |
-| `tasker_id` |  |
+| `Date` |  |
+| `Institute_ID` |  |
+| `Method_ID` |  |
+| `Parliament_ID` |  |
+| `Results` |  |
+| `Survey_Period` |  |
+| `Surveyed_Persons` |  |
+| `Tasker_ID` |  |
 
 Operations: List.
 
@@ -285,14 +286,14 @@ Create an instance: `get_polling_database = client.GetPollingDatabase()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `str` |  |
-| `institute_id` | `str` |  |
-| `method_id` | `str` |  |
-| `parliament_id` | `str` |  |
-| `result` | `dict` |  |
-| `survey_period` | `dict` |  |
-| `surveyed_person` | `int` |  |
-| `tasker_id` | `str` |  |
+| `Date` | `str` |  |
+| `Institute_ID` | `str` |  |
+| `Method_ID` | `str` |  |
+| `Parliament_ID` | `str` |  |
+| `Results` | `dict` |  |
+| `Survey_Period` | `dict` |  |
+| `Surveyed_Persons` | `int` |  |
+| `Tasker_ID` | `str` |  |
 
 #### Example: List
 

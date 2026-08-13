@@ -37,7 +37,7 @@ class GetPollingDatabaseEntity extends WahlumfragenDatenbankEntityBase<GetPollin
 
 
 
-  async list(this: any, reqmatch?: GetPollingDatabaseListMatch, ctrl?: Control): Promise<GetPollingDatabase[]> {
+  async list(this: any, reqmatch?: GetPollingDatabaseListMatch, ctrl?: Control): Promise<GetPollingDatabaseEntity[]> {
 
     const utility = this._utility
 

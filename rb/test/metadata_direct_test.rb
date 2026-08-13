@@ -59,11 +59,11 @@ def metadata_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "WAHLUMFRAGENDATENBANK_TEST_METADATA_ENTID" => {},
-    "WAHLUMFRAGENDATENBANK_TEST_LIVE" => "FALSE",
+    "WAHLUMFRAGEN_DATENBANK_TEST_METADATA_ENTID" => {},
+    "WAHLUMFRAGEN_DATENBANK_TEST_LIVE" => "FALSE",
   })
 
-  live = env["WAHLUMFRAGENDATENBANK_TEST_LIVE"] == "TRUE"
+  live = env["WAHLUMFRAGEN_DATENBANK_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

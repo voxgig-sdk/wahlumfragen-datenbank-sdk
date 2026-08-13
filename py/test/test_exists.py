@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# WahlumfragenDatenbank SDK exists test
 
 import pytest
 from wahlumfragendatenbank_sdk import WahlumfragenDatenbankSDK
