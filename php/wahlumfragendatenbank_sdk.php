@@ -40,7 +40,7 @@ class WahlumfragenDatenbankSDK
         $utility = new WahlumfragenDatenbankUtility();
         $this->_utility = $utility;
 
-        $config = WahlumfragenDatenbankConfig::make_config();
+        $config = WahlumfragenDatenbankConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

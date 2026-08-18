@@ -28,7 +28,7 @@ class WahlumfragenDatenbankSDK
     utility = WahlumfragenDatenbankUtility.new
     @_utility = utility
 
-    config = WahlumfragenDatenbankConfig.make_config
+    config = WahlumfragenDatenbankConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

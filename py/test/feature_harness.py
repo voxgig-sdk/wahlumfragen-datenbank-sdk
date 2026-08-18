@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from wahlumfragendatenbank_sdk.config import make_config
+from wahlumfragendatenbank_sdk.config import shared_config
 from wahlumfragendatenbank_sdk.features import _make_feature
 from wahlumfragendatenbank_sdk.core.control import WahlumfragenDatenbankControl
 from wahlumfragendatenbank_sdk.core.error import WahlumfragenDatenbankError
@@ -24,7 +24,7 @@ from wahlumfragendatenbank_sdk.core.spec import WahlumfragenDatenbankSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

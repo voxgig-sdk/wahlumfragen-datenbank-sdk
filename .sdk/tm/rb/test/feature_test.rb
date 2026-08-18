@@ -15,7 +15,7 @@ require_relative "../WahlumfragenDatenbank_sdk"
 module WahlumfragenDatenbankFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = WahlumfragenDatenbankConfig.make_config["feature"]
+    f = WahlumfragenDatenbankConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

@@ -23,8 +23,8 @@ class WahlumfragenDatenbankSDK:
         utility = WahlumfragenDatenbankUtility()
         self._utility = utility
 
-        from wahlumfragendatenbank_sdk.config import make_config
-        config = make_config()
+        from wahlumfragendatenbank_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,
