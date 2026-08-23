@@ -91,14 +91,14 @@ get_polling_database = client.GetPollingDatabase()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Date` | `str` | Yes |  |
-| `Institute_ID` | `str` | Yes |  |
-| `Method_ID` | `str` | No |  |
-| `Parliament_ID` | `str` | Yes |  |
-| `Results` | `dict` | Yes |  |
+| `Date` | `str` | Yes | Publication date in ISO 8601 format |
+| `Institute_ID` | `str` | Yes | ID of the polling institute |
+| `Method_ID` | `str` | No | ID of the polling method |
+| `Parliament_ID` | `str` | Yes | ID of the parliament |
+| `Results` | `dict` | Yes | Polling results indexed by party ID |
 | `Survey_Period` | `dict` | No |  |
-| `Surveyed_Persons` | `int` | No |  |
-| `Tasker_ID` | `str` | Yes |  |
+| `Surveyed_Persons` | `int` | No | Number of persons surveyed |
+| `Tasker_ID` | `str` | Yes | ID of the poll commissioner |
 
 ### Operations
 

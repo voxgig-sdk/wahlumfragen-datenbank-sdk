@@ -6,7 +6,7 @@ The Golang SDK for the WahlumfragenDatenbank API — an entity-oriented client u
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.GetPollingDatabase(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -263,14 +263,14 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"Date"` |  |
-| `"Institute_ID"` |  |
-| `"Method_ID"` |  |
-| `"Parliament_ID"` |  |
-| `"Results"` |  |
+| `"Date"` | Publication date in ISO 8601 format |
+| `"Institute_ID"` | ID of the polling institute |
+| `"Method_ID"` | ID of the polling method |
+| `"Parliament_ID"` | ID of the parliament |
+| `"Results"` | Polling results indexed by party ID |
 | `"Survey_Period"` |  |
-| `"Surveyed_Persons"` |  |
-| `"Tasker_ID"` |  |
+| `"Surveyed_Persons"` | Number of persons surveyed |
+| `"Tasker_ID"` | ID of the poll commissioner |
 
 Operations: List.
 
@@ -304,14 +304,14 @@ Create an instance: `getPollingDatabase := client.GetPollingDatabase(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `Date` | `string` |  |
-| `Institute_ID` | `string` |  |
-| `Method_ID` | `string` |  |
-| `Parliament_ID` | `string` |  |
-| `Results` | `map[string]any` |  |
+| `Date` | `string` | Publication date in ISO 8601 format |
+| `Institute_ID` | `string` | ID of the polling institute |
+| `Method_ID` | `string` | ID of the polling method |
+| `Parliament_ID` | `string` | ID of the parliament |
+| `Results` | `map[string]any` | Polling results indexed by party ID |
 | `Survey_Period` | `map[string]any` |  |
-| `Surveyed_Persons` | `int` |  |
-| `Tasker_ID` | `string` |  |
+| `Surveyed_Persons` | `int` | Number of persons surveyed |
+| `Tasker_ID` | `string` | ID of the poll commissioner |
 
 #### Example: List
 

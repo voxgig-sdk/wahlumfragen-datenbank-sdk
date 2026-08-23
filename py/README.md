@@ -245,14 +245,14 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `Date` |  |
-| `Institute_ID` |  |
-| `Method_ID` |  |
-| `Parliament_ID` |  |
-| `Results` |  |
+| `Date` | Publication date in ISO 8601 format |
+| `Institute_ID` | ID of the polling institute |
+| `Method_ID` | ID of the polling method |
+| `Parliament_ID` | ID of the parliament |
+| `Results` | Polling results indexed by party ID |
 | `Survey_Period` |  |
-| `Surveyed_Persons` |  |
-| `Tasker_ID` |  |
+| `Surveyed_Persons` | Number of persons surveyed |
+| `Tasker_ID` | ID of the poll commissioner |
 
 Operations: List.
 
@@ -286,14 +286,14 @@ Create an instance: `get_polling_database = client.GetPollingDatabase()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `Date` | `str` |  |
-| `Institute_ID` | `str` |  |
-| `Method_ID` | `str` |  |
-| `Parliament_ID` | `str` |  |
-| `Results` | `dict` |  |
+| `Date` | `str` | Publication date in ISO 8601 format |
+| `Institute_ID` | `str` | ID of the polling institute |
+| `Method_ID` | `str` | ID of the polling method |
+| `Parliament_ID` | `str` | ID of the parliament |
+| `Results` | `dict` | Polling results indexed by party ID |
 | `Survey_Period` | `dict` |  |
-| `Surveyed_Persons` | `int` |  |
-| `Tasker_ID` | `str` |  |
+| `Surveyed_Persons` | `int` | Number of persons surveyed |
+| `Tasker_ID` | `str` | ID of the poll commissioner |
 
 #### Example: List
 

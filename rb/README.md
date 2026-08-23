@@ -239,14 +239,14 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `Date` |  |
-| `Institute_ID` |  |
-| `Method_ID` |  |
-| `Parliament_ID` |  |
-| `Results` |  |
+| `Date` | Publication date in ISO 8601 format |
+| `Institute_ID` | ID of the polling institute |
+| `Method_ID` | ID of the polling method |
+| `Parliament_ID` | ID of the parliament |
+| `Results` | Polling results indexed by party ID |
 | `Survey_Period` |  |
-| `Surveyed_Persons` |  |
-| `Tasker_ID` |  |
+| `Surveyed_Persons` | Number of persons surveyed |
+| `Tasker_ID` | ID of the poll commissioner |
 
 Operations: List.
 
@@ -280,14 +280,14 @@ Create an instance: `get_polling_database = client.GetPollingDatabase`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `Date` | `String` |  |
-| `Institute_ID` | `String` |  |
-| `Method_ID` | `String` |  |
-| `Parliament_ID` | `String` |  |
-| `Results` | `Hash` |  |
+| `Date` | `String` | Publication date in ISO 8601 format |
+| `Institute_ID` | `String` | ID of the polling institute |
+| `Method_ID` | `String` | ID of the polling method |
+| `Parliament_ID` | `String` | ID of the parliament |
+| `Results` | `Hash` | Polling results indexed by party ID |
 | `Survey_Period` | `Hash` |  |
-| `Surveyed_Persons` | `Integer` |  |
-| `Tasker_ID` | `String` |  |
+| `Surveyed_Persons` | `Integer` | Number of persons surveyed |
+| `Tasker_ID` | `String` | ID of the poll commissioner |
 
 #### Example: List
 

@@ -19,6 +19,9 @@ module WahlumfragenDatenbankConfig
     {
       "main" => {
         "name" => "WahlumfragenDatenbank",
+        "slug" => "wahlumfragen-datenbank",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -43,25 +46,30 @@ module WahlumfragenDatenbankConfig
             {
               "name" => "Date",
               "req" => true,
+              "short" => "Publication date in ISO 8601 format",
               "type" => "`$STRING`",
             },
             {
               "name" => "Institute_ID",
               "req" => true,
+              "short" => "ID of the polling institute",
               "type" => "`$STRING`",
             },
             {
               "name" => "Method_ID",
+              "short" => "ID of the polling method",
               "type" => "`$STRING`",
             },
             {
               "name" => "Parliament_ID",
               "req" => true,
+              "short" => "ID of the parliament",
               "type" => "`$STRING`",
             },
             {
               "name" => "Results",
               "req" => true,
+              "short" => "Polling results indexed by party ID",
               "type" => "`$OBJECT`",
             },
             {
@@ -70,11 +78,13 @@ module WahlumfragenDatenbankConfig
             },
             {
               "name" => "Surveyed_Persons",
+              "short" => "Number of persons surveyed",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "Tasker_ID",
               "req" => true,
+              "short" => "ID of the poll commissioner",
               "type" => "`$STRING`",
             },
           ],

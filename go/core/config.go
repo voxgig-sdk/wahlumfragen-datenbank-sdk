@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "WahlumfragenDatenbank",
+			"slug": "wahlumfragen-datenbank",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -35,25 +38,30 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "Date",
 						"req": true,
+						"short": "Publication date in ISO 8601 format",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Institute_ID",
 						"req": true,
+						"short": "ID of the polling institute",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Method_ID",
+						"short": "ID of the polling method",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Parliament_ID",
 						"req": true,
+						"short": "ID of the parliament",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Results",
 						"req": true,
+						"short": "Polling results indexed by party ID",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -62,11 +70,13 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "Surveyed_Persons",
+						"short": "Number of persons surveyed",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "Tasker_ID",
 						"req": true,
+						"short": "ID of the poll commissioner",
 						"type": "`$STRING`",
 					},
 				},

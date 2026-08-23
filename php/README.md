@@ -249,14 +249,14 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `Date` |  |
-| `Institute_ID` |  |
-| `Method_ID` |  |
-| `Parliament_ID` |  |
-| `Results` |  |
+| `Date` | Publication date in ISO 8601 format |
+| `Institute_ID` | ID of the polling institute |
+| `Method_ID` | ID of the polling method |
+| `Parliament_ID` | ID of the parliament |
+| `Results` | Polling results indexed by party ID |
 | `Survey_Period` |  |
-| `Surveyed_Persons` |  |
-| `Tasker_ID` |  |
+| `Surveyed_Persons` | Number of persons surveyed |
+| `Tasker_ID` | ID of the poll commissioner |
 
 Operations: List.
 
@@ -290,14 +290,14 @@ Create an instance: `$get_polling_database = $client->GetPollingDatabase();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `Date` | `string` |  |
-| `Institute_ID` | `string` |  |
-| `Method_ID` | `string` |  |
-| `Parliament_ID` | `string` |  |
-| `Results` | `array` |  |
+| `Date` | `string` | Publication date in ISO 8601 format |
+| `Institute_ID` | `string` | ID of the polling institute |
+| `Method_ID` | `string` | ID of the polling method |
+| `Parliament_ID` | `string` | ID of the parliament |
+| `Results` | `array` | Polling results indexed by party ID |
 | `Survey_Period` | `array` |  |
-| `Surveyed_Persons` | `int` |  |
-| `Tasker_ID` | `string` |  |
+| `Surveyed_Persons` | `int` | Number of persons surveyed |
+| `Tasker_ID` | `string` | ID of the poll commissioner |
 
 #### Example: List
 

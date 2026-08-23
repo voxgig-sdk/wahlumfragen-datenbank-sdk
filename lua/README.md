@@ -234,14 +234,14 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `Date` |  |
-| `Institute_ID` |  |
-| `Method_ID` |  |
-| `Parliament_ID` |  |
-| `Results` |  |
+| `Date` | Publication date in ISO 8601 format |
+| `Institute_ID` | ID of the polling institute |
+| `Method_ID` | ID of the polling method |
+| `Parliament_ID` | ID of the parliament |
+| `Results` | Polling results indexed by party ID |
 | `Survey_Period` |  |
-| `Surveyed_Persons` |  |
-| `Tasker_ID` |  |
+| `Surveyed_Persons` | Number of persons surveyed |
+| `Tasker_ID` | ID of the poll commissioner |
 
 Operations: List.
 
@@ -275,14 +275,14 @@ Create an instance: `local get_polling_database = client:GetPollingDatabase(nil)
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `Date` | `string` |  |
-| `Institute_ID` | `string` |  |
-| `Method_ID` | `string` |  |
-| `Parliament_ID` | `string` |  |
-| `Results` | `table` |  |
+| `Date` | `string` | Publication date in ISO 8601 format |
+| `Institute_ID` | `string` | ID of the polling institute |
+| `Method_ID` | `string` | ID of the polling method |
+| `Parliament_ID` | `string` | ID of the parliament |
+| `Results` | `table` | Polling results indexed by party ID |
 | `Survey_Period` | `table` |  |
-| `Surveyed_Persons` | `number` |  |
-| `Tasker_ID` | `string` |  |
+| `Surveyed_Persons` | `number` | Number of persons surveyed |
+| `Tasker_ID` | `string` | ID of the poll commissioner |
 
 #### Example: List
 

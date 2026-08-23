@@ -36,30 +36,35 @@
               "active": true,
               "name": "Date",
               "req": true,
+              "short": "Publication date in ISO 8601 format",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Institute_ID",
               "req": true,
+              "short": "ID of the polling institute",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Method_ID",
               "req": false,
+              "short": "ID of the polling method",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Parliament_ID",
               "req": true,
+              "short": "ID of the parliament",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Results",
               "req": true,
+              "short": "Polling results indexed by party ID",
               "type": "`$OBJECT`"
             },
             {
@@ -72,12 +77,14 @@
               "active": true,
               "name": "Surveyed_Persons",
               "req": false,
+              "short": "Number of persons surveyed",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "Tasker_ID",
               "req": true,
+              "short": "ID of the poll commissioner",
               "type": "`$STRING`"
             }
           ],

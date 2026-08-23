@@ -94,14 +94,14 @@ local get_polling_database = client:GetPollingDatabase(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Date` | `string` | Yes |  |
-| `Institute_ID` | `string` | Yes |  |
-| `Method_ID` | `string` | No |  |
-| `Parliament_ID` | `string` | Yes |  |
-| `Results` | `table` | Yes |  |
+| `Date` | `string` | Yes | Publication date in ISO 8601 format |
+| `Institute_ID` | `string` | Yes | ID of the polling institute |
+| `Method_ID` | `string` | No | ID of the polling method |
+| `Parliament_ID` | `string` | Yes | ID of the parliament |
+| `Results` | `table` | Yes | Polling results indexed by party ID |
 | `Survey_Period` | `table` | No |  |
-| `Surveyed_Persons` | `number` | No |  |
-| `Tasker_ID` | `string` | Yes |  |
+| `Surveyed_Persons` | `number` | No | Number of persons surveyed |
+| `Tasker_ID` | `string` | Yes | ID of the poll commissioner |
 
 ### Operations
 
