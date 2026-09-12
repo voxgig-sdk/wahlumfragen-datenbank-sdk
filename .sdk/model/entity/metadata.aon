@@ -12,8 +12,10 @@ main: kit: entity: metadata: {
         {
           method: "GET"
           orig: "/last_update.txt"
-          parts: [
-            "last_update.txt"
+          segments: [
+            {
+              lit: "last_update.txt"
+            }
           ]
           transform: {
             req: "`reqdata`"

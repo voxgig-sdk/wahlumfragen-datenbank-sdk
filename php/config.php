@@ -59,6 +59,7 @@ class WahlumfragenDatenbankConfig
         'get_polling_database' => [
           'fields' => [
             [
+              'format' => 'date',
               'name' => 'Date',
               'req' => true,
               'short' => 'Publication date in ISO 8601 format',
@@ -114,12 +115,13 @@ class WahlumfragenDatenbankConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/',
-                  'parts' => [],
+                  'segments' => [],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [],
                 ],
               ],
             ],
@@ -141,13 +143,18 @@ class WahlumfragenDatenbankConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/last_update.txt',
-                  'parts' => [
-                    'last_update.txt',
+                  'segments' => [
+                    [
+                      'lit' => 'last_update.txt',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'last_update.txt',
                   ],
                 ],
               ],

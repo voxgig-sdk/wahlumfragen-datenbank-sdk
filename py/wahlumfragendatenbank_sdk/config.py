@@ -1,6 +1,14 @@
 # WahlumfragenDatenbank SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -54,6 +62,7 @@ def make_config():
       "get_polling_database": {
         "fields": [
           {
+            "format": "date",
             "name": "Date",
             "req": True,
             "short": "Publication date in ISO 8601 format",
@@ -109,12 +118,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/",
-                "parts": [],
+                "segments": [],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [],
               },
             ],
           },
@@ -136,14 +146,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/last_update.txt",
-                "parts": [
-                  "last_update.txt",
+                "segments": [
+                  {
+                    "lit": "last_update.txt",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "last_update.txt",
+                ],
               },
             ],
           },
