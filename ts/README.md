@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { WahlumfragenDatenbankSDK } from '@voxgig-sdk/wahlumfragen-datenbank'
+import { WahlumfragenDatenbankSDK } from '@voxgig-sdk/wahlumfragen-datenbank-sdk'
 
 const client = new WahlumfragenDatenbankSDK()
 ```
@@ -446,7 +446,7 @@ wahlumfragen-datenbank/
 Import the SDK from the package root:
 
 ```ts
-import { WahlumfragenDatenbankSDK } from '@voxgig-sdk/wahlumfragen-datenbank'
+import { WahlumfragenDatenbankSDK } from '@voxgig-sdk/wahlumfragen-datenbank-sdk'
 ```
 
 ### Entity state

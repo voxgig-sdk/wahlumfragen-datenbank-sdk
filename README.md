@@ -105,7 +105,7 @@ local results, err = client:GetPollingDatabase():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases) |
+| TypeScript | `@voxgig-sdk/wahlumfragen-datenbank-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases) |
 | Python | `voxgig-sdk-wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases) |
 | PHP | `voxgig-sdk/wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go` | `go get github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:GetPollingDatabase():list()
 ### TypeScript
 
 ```ts
-import { WahlumfragenDatenbankSDK } from '@voxgig-sdk/wahlumfragen-datenbank'
+import { WahlumfragenDatenbankSDK } from '@voxgig-sdk/wahlumfragen-datenbank-sdk'
 
 const client = new WahlumfragenDatenbankSDK()
 
