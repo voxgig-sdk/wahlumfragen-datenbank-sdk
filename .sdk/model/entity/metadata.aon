@@ -10,6 +10,12 @@ main: kit: entity: metadata: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /last_update.txt"
+            json: "{\"operationId\":\"getLastUpdate\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"text/plain\":{\"schema\":{\"example\":\"2023-10-15T14:30:00+02:00\",\"format\":\"date-time\",\"type\":\"string\"}}},\"description\":\"Successful response containing the last update timestamp\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/last_update.txt"
           segments: [

@@ -1,12 +1,18 @@
 # WahlumfragenDatenbank SDK feature factory
 
 from wahlumfragendatenbank_sdk.feature.base_feature import WahlumfragenDatenbankBaseFeature
+from wahlumfragendatenbank_sdk.feature.ratelimit_feature import WahlumfragenDatenbankRatelimitFeature
+from wahlumfragendatenbank_sdk.feature.retry_feature import WahlumfragenDatenbankRetryFeature
 from wahlumfragendatenbank_sdk.feature.test_feature import WahlumfragenDatenbankTestFeature
+from wahlumfragendatenbank_sdk.feature.timeout_feature import WahlumfragenDatenbankTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: WahlumfragenDatenbankBaseFeature(),
+    "ratelimit": lambda: WahlumfragenDatenbankRatelimitFeature(),
+    "retry": lambda: WahlumfragenDatenbankRetryFeature(),
     "test": lambda: WahlumfragenDatenbankTestFeature(),
+    "timeout": lambda: WahlumfragenDatenbankTimeoutFeature(),
 }
 
 

@@ -16,5 +16,30 @@
     "metadata": {
       "metadata_ref01": {}
     }
+  },
+  "requests": {
+    "GET /last_update.txt": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getLastUpdate",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "2023-10-15T14:30:00+02:00",
+                  "format": "date-time",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful response containing the last update timestamp"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
