@@ -1,4 +1,4 @@
 # Entity Models
 
-@"get_polling_database.aon"
-@"metadata.aon"
+@"./get_polling_database.aon"
+@"./metadata.aon"

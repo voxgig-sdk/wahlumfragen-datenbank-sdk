@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicGetPollingDatabaseFlow.aon"
-@"BasicMetadataFlow.aon"
+@"./BasicGetPollingDatabaseFlow.aon"
+@"./BasicMetadataFlow.aon"

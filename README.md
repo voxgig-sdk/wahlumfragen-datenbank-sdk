@@ -105,12 +105,12 @@ local results, err = client:GetPollingDatabase():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/wahlumfragen-datenbank-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases) |
-| Python | `voxgig-sdk-wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases) |
-| PHP | `voxgig-sdk/wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases) |
+| TypeScript | `@voxgig-sdk/wahlumfragen-datenbank-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/tags) |
+| Python | `voxgig-sdk-wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/tags) |
+| PHP | `voxgig-sdk/wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go` | `go get github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go@latest` |
-| Ruby | `voxgig-sdk-wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases) |
-| Lua | `voxgig-sdk-wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/releases) |
+| Ruby | `voxgig-sdk-wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/tags) |
+| Lua | `voxgig-sdk-wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go-cli` | `go install github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go-cli/cmd/wahlumfragen-datenbank@latest` |
 | Go MCP server | `github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go-mcp` | `go get github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go-mcp@latest` |
 

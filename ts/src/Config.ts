@@ -127,12 +127,12 @@ class Config {
 
     entity: {
       
-      get_polling_database: {
-      },
-
-      metadata: {
-      },
-
+        get_polling_database: {
+        },
+  
+        metadata: {
+        },
+  
     }
   }
 
