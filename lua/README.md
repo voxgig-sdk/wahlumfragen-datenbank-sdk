@@ -43,7 +43,7 @@ local getpollingdatabases, err = client:GetPollingDatabase():list()
 if err then error(err) end
 
 for _, item in ipairs(getpollingdatabases) do
-  print(item["Date"])
+  print(item)
 end
 ```
 

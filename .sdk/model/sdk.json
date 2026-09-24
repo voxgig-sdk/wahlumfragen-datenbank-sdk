@@ -24,70 +24,144 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "get_polling_database": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "format": "date",
-              "name": "Date",
-              "req": true,
-              "short": "Publication date in ISO 8601 format",
-              "type": "`$STRING`"
+          "fields": {
+            "Date": {
+              "a": true,
+              "fo": "date",
+              "h": "Date",
+              "n": "Date",
+              "r": true,
+              "sh": "Publication date in ISO 8601 format",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Institute_ID",
-              "req": true,
-              "short": "ID of the polling institute",
-              "type": "`$STRING`"
+            "Institute_ID": {
+              "a": true,
+              "h": "Institute Id",
+              "n": "Institute_ID",
+              "r": true,
+              "sh": "ID of the polling institute",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Method_ID",
-              "req": false,
-              "short": "ID of the polling method",
-              "type": "`$STRING`"
+            "Method_ID": {
+              "a": true,
+              "h": "Method Id",
+              "n": "Method_ID",
+              "r": false,
+              "sh": "ID of the polling method",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Parliament_ID",
-              "req": true,
-              "short": "ID of the parliament",
-              "type": "`$STRING`"
+            "Parliament_ID": {
+              "a": true,
+              "h": "Parliament Id",
+              "n": "Parliament_ID",
+              "r": true,
+              "sh": "ID of the parliament",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Results",
-              "req": true,
-              "short": "Polling results indexed by party ID",
-              "type": "`$OBJECT`"
+            "Results": {
+              "a": true,
+              "h": "Results",
+              "n": "Results",
+              "r": true,
+              "sh": "Polling results indexed by party ID",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "Survey_Period",
-              "req": false,
-              "type": "`$OBJECT`"
+            "Survey_Period": {
+              "a": true,
+              "h": "Survey Period",
+              "n": "Survey_Period",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "Surveyed_Persons",
-              "req": false,
-              "short": "Number of persons surveyed",
-              "type": "`$INTEGER`"
+            "Surveyed_Persons": {
+              "a": true,
+              "h": "Surveyed Persons",
+              "n": "Surveyed_Persons",
+              "r": false,
+              "sh": "Number of persons surveyed",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "Tasker_ID",
-              "req": true,
-              "short": "ID of the poll commissioner",
-              "type": "`$STRING`"
+            "Tasker_ID": {
+              "a": true,
+              "h": "Tasker Id",
+              "n": "Tasker_ID",
+              "r": true,
+              "sh": "ID of the poll commissioner",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "get_polling_database",
           "op": {
             "list": {
@@ -95,20 +169,20 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /",
-                    "json": "{\"operationId\":\"getPollingDatabase\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"Author\":{\"description\":\"Creator of the database\",\"example\":\"DAWUM\",\"type\":\"string\"},\"Database\":{\"description\":\"Information about the database\",\"type\":\"object\"},\"Institutes\":{\"additionalProperties\":{\"properties\":{\"Name\":{\"description\":\"Name of the polling institute\",\"example\":\"Forsa\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":\"Collection of polling institutes indexed by ID\",\"type\":\"object\"},\"Last_Update\":{\"description\":\"Last update timestamp in W3C DateTime format\",\"format\":\"date-time\",\"type\":\"string\"},\"License\":{\"properties\":{\"Link\":{\"description\":\"URL to the license\",\"example\":\"https://opendatacommons.org/licenses/odbl/\",\"format\":\"uri\",\"type\":\"string\"},\"Name\":{\"description\":\"Full name of the license\",\"example\":\"ODC Open Database License\",\"type\":\"string\"},\"Shortcut\":{\"description\":\"Short name of the license\",\"example\":\"ODC-ODbL\",\"type\":\"string\"}},\"type\":\"object\"},\"Methods\":{\"additionalProperties\":{\"properties\":{\"Name\":{\"description\":\"Name of the polling method\",\"example\":\"Online\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":\"Collection of polling methods indexed by ID\",\"type\":\"object\"},\"Parliaments\":{\"additionalProperties\":{\"properties\":{\"Election\":{\"description\":\"Name of the election\",\"example\":\"Landtagswahl Nordrhein-Westfalen\",\"type\":\"string\"},\"Name\":{\"description\":\"Full name of the parliament\",\"example\":\"Landtag Nordrhein-Westfalen\",\"type\":\"string\"},\"Shortcut\":{\"description\":\"Short name of the federal state or federal parliament\",\"example\":\"Nordrhein-Westfalen (NRW)\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":\"Collection of parliaments indexed by ID\",\"type\":\"object\"},\"Parties\":{\"additionalProperties\":{\"properties\":{\"Name\":{\"description\":\"Full name of the party\",\"example\":\"Christlich Demokratische Union/Christlich-Soziale Union\",\"type\":\"string\"},\"Shortcut\":{\"description\":\"Abbreviation of the party\",\"example\":\"CDU/CSU\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":\"Collection of political parties indexed by ID\",\"type\":\"object\"},\"Publisher\":{\"description\":\"Domain of the publisher\",\"example\":\"dawum.de\",\"type\":\"string\"},\"Surveys\":{\"description\":\"Array of all polling surveys\",\"items\":{\"properties\":{\"Date\":{\"description\":\"Publication date in ISO 8601 format\",\"example\":\"2023-10-15\",\"format\":\"date\",\"type\":\"string\"},\"Institute_ID\":{\"description\":\"ID of the polling institute\",\"type\":\"string\"},\"Method_ID\":{\"description\":\"ID of the polling method\",\"type\":\"string\"},\"Parliament_ID\":{\"description\":\"ID of the parliament\",\"type\":\"string\"},\"Results\":{\"additionalProperties\":{\"description\":\"Poll result as percentage\",\"format\":\"float\",\"type\":\"number\"},\"description\":\"Polling results indexed by party ID\",\"type\":\"object\"},\"Survey_Period\":{\"properties\":{\"Date_End\":{\"description\":\"End date of the survey period\",\"format\":\"date\",\"type\":\"string\"},\"Date_Start\":{\"description\":\"Start date of the survey period\",\"format\":\"date\",\"type\":\"string\"}},\"type\":\"object\"},\"Surveyed_Persons\":{\"description\":\"Number of persons surveyed\",\"example\":1500,\"type\":\"integer\"},\"Tasker_ID\":{\"description\":\"ID of the poll commissioner\",\"type\":\"string\"}},\"required\":[\"Parliament_ID\",\"Institute_ID\",\"Tasker_ID\",\"Results\",\"Date\"],\"type\":\"object\"},\"type\":\"array\"},\"Taskers\":{\"additionalProperties\":{\"properties\":{\"Name\":{\"description\":\"Name of the poll commissioner\",\"example\":\"RTL/ntv\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":\"Collection of poll commissioners indexed by ID\",\"type\":\"object\"}},\"required\":[\"Database\",\"License\",\"Publisher\",\"Author\",\"Last_Update\",\"Parliaments\",\"Institutes\",\"Taskers\",\"Methods\",\"Parties\",\"Surveys\"],\"type\":\"object\"}}},\"description\":\"Successful response containing the complete polling database\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/",
-                  "segments": [],
-                  "select": {},
-                  "transform": {
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/",
+                  "q": {},
+                  "r": {},
+                  "s": [],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -125,7 +199,7 @@
           "alias": {
             "field": {}
           },
-          "fields": [],
+          "fields": {},
           "name": "metadata",
           "op": {
             "load": {
@@ -133,24 +207,24 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /last_update.txt",
-                    "json": "{\"operationId\":\"getLastUpdate\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"text/plain\":{\"schema\":{\"example\":\"2023-10-15T14:30:00+02:00\",\"format\":\"date-time\",\"type\":\"string\"}}},\"description\":\"Successful response containing the last update timestamp\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/last_update.txt",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/last_update.txt",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "last_update.txt"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -579,13 +653,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -605,17 +679,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "metadata_ref01",
                 "srcdatavar": "metadata_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

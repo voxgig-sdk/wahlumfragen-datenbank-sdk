@@ -1,7 +1,7 @@
 // Typed models for the WahlumfragenDatenbank SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,14 +14,6 @@ import (
 
 // GetPollingDatabase is the typed data model for the get_polling_database entity.
 type GetPollingDatabase struct {
-	Date string `json:"Date"`
-	InstituteID string `json:"Institute_ID"`
-	MethodID *string `json:"Method_ID,omitempty"`
-	ParliamentID string `json:"Parliament_ID"`
-	Results map[string]any `json:"Results"`
-	SurveyPeriod *map[string]any `json:"Survey_Period,omitempty"`
-	SurveyedPersons *int `json:"Surveyed_Persons,omitempty"`
-	TaskerID string `json:"Tasker_ID"`
 }
 
 // GetPollingDatabaseListMatch is the typed request payload for GetPollingDatabase.ListTyped.

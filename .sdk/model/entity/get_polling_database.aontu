@@ -1,0 +1,90 @@
+# Entity: get_polling_database
+
+main: kit: entity: get_polling_database: {
+
+  alias: field: {}
+
+  fields: {
+    Date: {
+      fo: "date"
+      h: "Date"
+      n: "Date"
+      r: true
+      sh: "Publication date in ISO 8601 format"
+      t: "`$STRING`"
+    }
+    Institute_ID: {
+      h: "Institute Id"
+      n: "Institute_ID"
+      r: true
+      sh: "ID of the polling institute"
+      t: "`$STRING`"
+    }
+    Method_ID: {
+      h: "Method Id"
+      n: "Method_ID"
+      r: false
+      sh: "ID of the polling method"
+      t: "`$STRING`"
+    }
+    Parliament_ID: {
+      h: "Parliament Id"
+      n: "Parliament_ID"
+      r: true
+      sh: "ID of the parliament"
+      t: "`$STRING`"
+    }
+    Results: {
+      h: "Results"
+      n: "Results"
+      r: true
+      sh: "Polling results indexed by party ID"
+      t: "`$OBJECT`"
+    }
+    Survey_Period: {
+      h: "Survey Period"
+      n: "Survey_Period"
+      r: false
+      t: "`$OBJECT`"
+    }
+    Surveyed_Persons: {
+      h: "Surveyed Persons"
+      n: "Surveyed_Persons"
+      r: false
+      sh: "Number of persons surveyed"
+      t: "`$INTEGER`"
+    }
+    Tasker_ID: {
+      h: "Tasker Id"
+      n: "Tasker_ID"
+      r: true
+      sh: "ID of the poll commissioner"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "get_polling_database"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/"
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

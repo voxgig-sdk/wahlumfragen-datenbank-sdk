@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -114,49 +107,57 @@ class Config {
         "get_polling_database": {
             "fields": [
                 {
-                    "format": "date",
                     "name": "Date",
+                    "title": "Date",
+                    "type": "`$STRING`",
                     "req": true,
                     "short": "Publication date in ISO 8601 format",
-                    "type": "`$STRING`"
+                    "format": "date"
                 },
                 {
                     "name": "Institute_ID",
+                    "title": "Institute Id",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "ID of the polling institute",
-                    "type": "`$STRING`"
+                    "short": "ID of the polling institute"
                 },
                 {
                     "name": "Method_ID",
-                    "short": "ID of the polling method",
-                    "type": "`$STRING`"
+                    "title": "Method Id",
+                    "type": "`$STRING`",
+                    "short": "ID of the polling method"
                 },
                 {
                     "name": "Parliament_ID",
+                    "title": "Parliament Id",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "ID of the parliament",
-                    "type": "`$STRING`"
+                    "short": "ID of the parliament"
                 },
                 {
                     "name": "Results",
+                    "title": "Results",
+                    "type": "`$OBJECT`",
                     "req": true,
-                    "short": "Polling results indexed by party ID",
-                    "type": "`$OBJECT`"
+                    "short": "Polling results indexed by party ID"
                 },
                 {
                     "name": "Survey_Period",
+                    "title": "Survey Period",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "Surveyed_Persons",
-                    "short": "Number of persons surveyed",
-                    "type": "`$INTEGER`"
+                    "title": "Surveyed Persons",
+                    "type": "`$INTEGER`",
+                    "short": "Number of persons surveyed"
                 },
                 {
                     "name": "Tasker_ID",
+                    "title": "Tasker Id",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "ID of the poll commissioner",
-                    "type": "`$STRING`"
+                    "short": "ID of the poll commissioner"
                 }
             ],
             "name": "get_polling_database",
@@ -166,17 +167,18 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/",
                             "segments": [],
-                            "select": {},
+                            "parts": [],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": []
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }
@@ -194,7 +196,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/last_update.txt",
@@ -203,14 +204,16 @@ class Config {
                                     "lit": "last_update.txt"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "last_update.txt"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "last_update.txt"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }

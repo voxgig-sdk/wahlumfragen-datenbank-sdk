@@ -19,7 +19,6 @@ import type {
   GetPollingDatabaseListMatch,
 } from '../WahlumfragenDatenbankTypes'
 
-// TODO: needs Entity superclass
 class GetPollingDatabaseEntity extends WahlumfragenDatenbankEntityBase<GetPollingDatabase> {
 
   constructor(client: WahlumfragenDatenbankSDK, entopts: any) {

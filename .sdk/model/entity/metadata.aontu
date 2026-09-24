@@ -1,0 +1,39 @@
+# Entity: metadata
+
+main: kit: entity: metadata: {
+
+  alias: field: {}
+
+  name: "metadata"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /last_update.txt"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/last_update.txt"
+          s: [
+            {
+              lit: "last_update.txt"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetPollingDatabaseEntity = void 0;
 const WahlumfragenDatenbankEntityBase_1 = require("../WahlumfragenDatenbankEntityBase");
-// TODO: needs Entity superclass
 class GetPollingDatabaseEntity extends WahlumfragenDatenbankEntityBase_1.WahlumfragenDatenbankEntityBase {
     constructor(client, entopts) {
         super(client, entopts);
