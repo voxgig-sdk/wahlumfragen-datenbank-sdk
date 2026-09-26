@@ -106,11 +106,11 @@ local results, err = client:GetPollingDatabase():list()
 | Language | Package | Install |
 | --- | --- | --- |
 | TypeScript | `@voxgig-sdk/wahlumfragen-datenbank-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/tags) |
-| Python | `voxgig-sdk-wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/tags) |
-| PHP | `voxgig-sdk/wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/tags) |
+| Python | `voxgig-sdk-wahlumfragen-datenbank-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/tags) |
+| PHP | `voxgig-sdk/wahlumfragen-datenbank-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go` | `go get github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go@latest` |
-| Ruby | `voxgig-sdk-wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/tags) |
-| Lua | `voxgig-sdk-wahlumfragen-datenbank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/tags) |
+| Ruby | `voxgig-sdk-wahlumfragen-datenbank-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/tags) |
+| Lua | `voxgig-sdk-wahlumfragen-datenbank-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go-cli` | `go install github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go-cli/cmd/wahlumfragen-datenbank@latest` |
 | Go MCP server | `github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go-mcp` | `go get github.com/voxgig-sdk/wahlumfragen-datenbank-sdk/go-mcp@latest` |
 
@@ -340,10 +340,10 @@ forking the SDK.
 
 | Feature | Purpose |
 | --- | --- |
-| **RatelimitFeature** | Client-side rate limiting via a token bucket |
-| **RetryFeature** | Automatic retry of transient failures with exponential backoff |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-| **TimeoutFeature** | Per-request timeout with transport abort |
+| **RatelimitFeature** | Rate limiting |
+| **RetryFeature** | Retry |
+| **TestFeature** | Test transport |
+| **TimeoutFeature** | Timeout |
 
 Pass custom features via the `extend` option at construction time.
 
