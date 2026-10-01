@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 WahlumfragenDatenbankUtility::setRegistrar(function (WahlumfragenDatenbankUtility $u): void {
     $u->clean = [WahlumfragenDatenbankClean::class, 'call'];
+    $u->clean_add = [WahlumfragenDatenbankClean::class, 'add'];
+    $u->clean_explain = [WahlumfragenDatenbankDone::class, 'clean_explain'];
     $u->done = [WahlumfragenDatenbankDone::class, 'call'];
     $u->make_error = [WahlumfragenDatenbankMakeError::class, 'call'];
     $u->feature_add = [WahlumfragenDatenbankFeatureAdd::class, 'call'];

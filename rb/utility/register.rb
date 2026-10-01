@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 WahlumfragenDatenbankUtility.registrar = ->(u) {
   u.clean = WahlumfragenDatenbankUtilities::Clean
+  u.clean_add = WahlumfragenDatenbankUtilities::CleanAdd
+  u.clean_explain = WahlumfragenDatenbankUtilities::CleanExplain
   u.done = WahlumfragenDatenbankUtilities::Done
   u.make_error = WahlumfragenDatenbankUtilities::MakeError
   u.feature_add = WahlumfragenDatenbankUtilities::FeatureAdd
