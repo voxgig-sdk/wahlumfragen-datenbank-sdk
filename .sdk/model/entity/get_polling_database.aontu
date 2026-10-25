@@ -76,6 +76,10 @@ main: kit: entity: get_polling_database: {
           }
           m: "GET"
           o: "/"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           t: {
             req: "`reqdata`"
             res: "`body`"

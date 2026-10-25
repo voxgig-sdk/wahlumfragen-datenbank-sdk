@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { WahlumfragenDatenbankSDK, BaseFeature, stdutil } from '../../..'
+import { WahlumfragenDatenbankSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('GetPollingDatabaseEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('get_polling_database hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of WahlumfragenDatenbankSDK.test(offline).GetPollingDatabase().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of WahlumfragenDatenbankSDK.test(offline).GetPollingDatabase()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = WahlumfragenDatenbankSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.GetPollingDatabase().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of WahlumfragenDatenbankSDK.test().GetPollingDatabase().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new WahlumfragenDatenbankSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.GetPollingDatabase().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.GetPollingDatabase().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = WahlumfragenDatenbankSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.GetPollingDatabase().list({"Date":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.WAHLUMFRAGEN_DATENBANK_TEST_LIVE
@@ -51,7 +109,7 @@ describe('GetPollingDatabaseEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"Date":{"a":true,"fo":"date","h":"Date","n":"Date","r":true,"sh":"Publication date in ISO 8601 format","t":"`$STRING`","key$":"Date","index$":0},"Institute_ID":{"a":true,"h":"Institute Id","n":"Institute_ID","r":true,"sh":"ID of the polling institute","t":"`$STRING`","key$":"Institute_ID","index$":1},"Method_ID":{"a":true,"h":"Method Id","n":"Method_ID","r":false,"sh":"ID of the polling method","t":"`$STRING`","key$":"Method_ID","index$":2},"Parliament_ID":{"a":true,"h":"Parliament Id","n":"Parliament_ID","r":true,"sh":"ID of the parliament","t":"`$STRING`","key$":"Parliament_ID","index$":3},"Results":{"a":true,"h":"Results","n":"Results","r":true,"sh":"Polling results indexed by party ID","t":"`$OBJECT`","key$":"Results","index$":4},"Survey_Period":{"a":true,"h":"Survey Period","n":"Survey_Period","r":false,"t":"`$OBJECT`","key$":"Survey_Period","index$":5},"Surveyed_Persons":{"a":true,"h":"Surveyed Persons","n":"Surveyed_Persons","r":false,"sh":"Number of persons surveyed","t":"`$INTEGER`","key$":"Surveyed_Persons","index$":6},"Tasker_ID":{"a":true,"h":"Tasker Id","n":"Tasker_ID","r":true,"sh":"ID of the poll commissioner","t":"`$STRING`","key$":"Tasker_ID","index$":7}},"name":"get_polling_database","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/","q":{},"r":{},"s":[],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"get_polling_database","name__orig":"get_polling_database","Name":"GetPollingDatabase","name_":"get_polling_database","name-":"get-polling-database","NAME":"GET_POLLING_DATABASE","index$":0}, {"active":true,"entity":"get_polling_database","key$":"BasicGetPollingDatabaseFlow","kind":"basic","name":"BasicGetPollingDatabaseFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"get_polling_database_ref01"}}],"index$":0}]}, 'GetPollingDatabase', {"GET /":{"protocol":"http","parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"Date":{"a":true,"fo":"date","h":"Date","n":"Date","r":true,"sh":"Publication date in ISO 8601 format","t":"`$STRING`","key$":"Date","index$":0},"Institute_ID":{"a":true,"h":"Institute Id","n":"Institute_ID","r":true,"sh":"ID of the polling institute","t":"`$STRING`","key$":"Institute_ID","index$":1},"Method_ID":{"a":true,"h":"Method Id","n":"Method_ID","r":false,"sh":"ID of the polling method","t":"`$STRING`","key$":"Method_ID","index$":2},"Parliament_ID":{"a":true,"h":"Parliament Id","n":"Parliament_ID","r":true,"sh":"ID of the parliament","t":"`$STRING`","key$":"Parliament_ID","index$":3},"Results":{"a":true,"h":"Results","n":"Results","r":true,"sh":"Polling results indexed by party ID","t":"`$OBJECT`","key$":"Results","index$":4},"Survey_Period":{"a":true,"h":"Survey Period","n":"Survey_Period","r":false,"t":"`$OBJECT`","key$":"Survey_Period","index$":5},"Surveyed_Persons":{"a":true,"h":"Surveyed Persons","n":"Surveyed_Persons","r":false,"sh":"Number of persons surveyed","t":"`$INTEGER`","key$":"Surveyed_Persons","index$":6},"Tasker_ID":{"a":true,"h":"Tasker Id","n":"Tasker_ID","r":true,"sh":"ID of the poll commissioner","t":"`$STRING`","key$":"Tasker_ID","index$":7}},"name":"get_polling_database","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"get_polling_database","name__orig":"get_polling_database","Name":"GetPollingDatabase","name_":"get_polling_database","name-":"get-polling-database","NAME":"GET_POLLING_DATABASE","index$":0}, {"active":true,"entity":"get_polling_database","key$":"BasicGetPollingDatabaseFlow","kind":"basic","name":"BasicGetPollingDatabaseFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"get_polling_database_ref01"}}],"index$":0}]}, 'GetPollingDatabase', {"GET /":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +130,12 @@ describe('GetPollingDatabaseEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

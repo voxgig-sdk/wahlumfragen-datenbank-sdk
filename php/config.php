@@ -93,6 +93,7 @@ class WahlumfragenDatenbankConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -185,6 +186,10 @@ class WahlumfragenDatenbankConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
                 ],
               ],
             ],
@@ -220,6 +225,10 @@ class WahlumfragenDatenbankConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'kind' => 'raw',
+                    'media' => 'text/plain',
+                  ],
                 ],
               ],
             ],

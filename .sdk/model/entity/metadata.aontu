@@ -17,6 +17,10 @@ main: kit: entity: metadata: {
           }
           m: "GET"
           o: "/last_update.txt"
+          rs: {
+            kind: "raw"
+            media: "text/plain"
+          }
           s: [
             {
               lit: "last_update.txt"

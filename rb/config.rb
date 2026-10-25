@@ -79,6 +79,7 @@ module WahlumfragenDatenbankConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -171,6 +172,10 @@ module WahlumfragenDatenbankConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
               ],
             },
@@ -206,6 +211,10 @@ module WahlumfragenDatenbankConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "kind" => "raw",
+                    "media" => "text/plain",
+                  },
                 },
               ],
             },

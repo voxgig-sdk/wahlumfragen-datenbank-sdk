@@ -62,7 +62,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "metadata", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /last_update.txt", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/last_update.txt", "q": {}, "r": {}, "s": [{ "lit": "last_update.txt" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "metadata", "name__orig": "metadata", "Name": "Metadata", "name_": "metadata", "name-": "metadata", "NAME": "METADATA", "index$": 1 }, { "active": true, "entity": "metadata", "key$": "BasicMetadataFlow", "kind": "basic", "name": "BasicMetadataFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "metadata_ref01", "srcdatavar": "metadata_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-metadata_ref01" } }], "index$": 0 }] }, 'Metadata', { "GET /last_update.txt": { "protocol": "http", "parameters": [] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "metadata", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /last_update.txt", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/last_update.txt", "q": {}, "r": {}, "rs": { "kind": "raw", "media": "text/plain" }, "s": [{ "lit": "last_update.txt" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "metadata", "name__orig": "metadata", "Name": "Metadata", "name_": "metadata", "name-": "metadata", "NAME": "METADATA", "index$": 1 }, { "active": true, "entity": "metadata", "key$": "BasicMetadataFlow", "kind": "basic", "name": "BasicMetadataFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "metadata_ref01", "srcdatavar": "metadata_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-metadata_ref01" } }], "index$": 0 }] }, 'Metadata', { "GET /last_update.txt": { "protocol": "http", "parameters": [] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -76,6 +76,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(null != metadata_ref01_data_dt0);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

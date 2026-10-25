@@ -17,15 +17,20 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
             "Database": {},
             "License": {
-                "Link": "https://opendatacommons.org/licenses/odbl/",
                 "Name": "ODC Open Database License",
-                "Shortcut": "ODC-ODbL"
+                "Shortcut": "ODC-ODbL",
+                "Link": "https://opendatacommons.org/licenses/odbl/"
             },
             "Publisher": "dawum.de",
             "Author": "DAWUM",
@@ -37,17 +42,17 @@ const PLAN = [
             "Parties": {},
             "Surveys": [
                 {
-                    "Date": "2023-10-15",
-                    "Institute_ID": "x",
-                    "Method_ID": "x",
                     "Parliament_ID": "x",
+                    "Institute_ID": "x",
+                    "Tasker_ID": "x",
+                    "Method_ID": "x",
                     "Results": {},
+                    "Date": "2023-10-15",
                     "Survey_Period": {
-                        "Date_End": "2026-01-01",
-                        "Date_Start": "2026-01-01"
+                        "Date_Start": "2026-01-01",
+                        "Date_End": "2026-01-01"
                     },
-                    "Surveyed_Persons": 1500,
-                    "Tasker_ID": "x"
+                    "Surveyed_Persons": 1500
                 }
             ]
         },
@@ -62,7 +67,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "text/plain"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": null,
